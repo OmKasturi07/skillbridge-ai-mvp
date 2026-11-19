@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #FAF9F6;
+  --color-surface: #FCF8FF;
+  --color-surface-dim: #DBD6F8;
+  --color-surface-bright: #FCF8FF;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #F6F1FF;
+  --color-surface-container: #F0EBFF;
+  --color-surface-container-high: #EAE5FF;
+  --color-surface-container-highest: #E4DFFF;
+  --color-surface-variant: #E4DFFF;
+  --color-on-surface: #1A1832;
+  --color-on-surface-variant: #474554;
+  --color-on-background: #1A1832;
+  --color-background: #FCF8FF;
+  --color-inverse-surface: #302D48;
+  --color-inverse-on-surface: #F3EEFF;
+  --color-outline: #787586;
+  --color-outline-variant: #C9C4D7;
+  --color-primary: #5842D3;
+  --color-on-primary: #FFFFFF;
+  --color-primary-container: #715EEE;
+  --color-on-primary-container: #FFFBFF;
+  --color-primary-fixed: #E5DEFF;
+  --color-primary-fixed-dim: #C7BFFF;
+  --color-on-primary-fixed: #180065;
+  --color-on-primary-fixed-variant: #4226BD;
+  --color-inverse-primary: #C7BFFF;
+  --color-secondary: #546500;
+  --color-on-secondary: #FFFFFF;
+  --color-secondary-container: #D3EF66;
+  --color-on-secondary-container: #596C00;
+  --color-secondary-fixed: #D3EF66;
+  --color-secondary-fixed-dim: #B7D24D;
+  --color-on-secondary-fixed: #181E00;
+  --color-on-secondary-fixed-variant: #3F4C00;
+  --color-tertiary: #5C5A6B;
+  --color-on-tertiary: #FFFFFF;
+  --color-tertiary-container: #757384;
+  --color-tertiary-fixed: #E4E0F4;
+  --color-tertiary-fixed-dim: #C8C4D7;
+  --color-on-tertiary-fixed: #1B1A28;
+  --color-on-tertiary-fixed-variant: #464555;
+  --color-error: #BA1A1A;
+  --color-on-error: #FFFFFF;
+  --color-error-container: #FFDAD6;
+  --color-on-error-container: #93000A;
+
+  --color-midnight: #17152E;
+  --color-electric: #7865F5;
+  --color-electric-hover: #6450E8;
+  --color-lavender-subtle: #EEEAFE;
+  --color-lavender-card: #F6F1FF;
+  --color-lavender-border: #E4DFFF;
+  --color-lime-accent: #D7F36A;
+  --color-lime-accent-dark: #364100;
+  --color-lime-dark: #3B4500;
+  --color-text-subtle: #696682;
+
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAF9F6;
+    color: #1A1832;
+    font-family: "Manrope", sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(120, 101, 245, 0.25);
+    border-radius: 9999px;
+  }
+}
+
+.font-label-numeric {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.font-label-badge {
+  font-family: "Manrope", sans-serif;
+}
+
+.font-headline-md {
+  font-family: "Manrope", sans-serif;
+}
+
+.font-headline-lg {
+  font-family: "Manrope", sans-serif;
+}
+
+.font-headline-xl {
+  font-family: "Manrope", sans-serif;
+}
+
+.font-display-hero {
+  font-family: "Manrope", sans-serif;
+}
+
+.font-body-sm,
+.font-body-md,
+.font-body-lg {
+  font-family: "Manrope", sans-serif;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.35;
+  }
+}
+
+.node-pulse {
+  animation: pulseGlow 2.8s ease-in-out infinite;
+}
+
+.button-glow {
+  box-shadow: 0 10px 25px -4px rgba(120, 101, 245, 0.4);
+}
+.button-glow:hover {
+  box-shadow: 0 14px 30px -3px rgba(120, 101, 245, 0.55);
+}
+
+.glow-lime {
+  box-shadow: 0 4px 20px -2px rgba(215, 243, 106, 0.45);
+}
+.glow-lime:hover {
+  box-shadow: 0 6px 26px 0px rgba(215, 243, 106, 0.65);
+}
+
+.card-hover-lift {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+}
+.card-hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(23, 21, 46, 0.08);
+}

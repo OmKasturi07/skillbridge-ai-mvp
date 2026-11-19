@@ -1,0 +1,8 @@
+{
+  "name": "SkillBridge AI",
+  "description": "AI-powered student skill gap analysis, career discovery, and personalized learning roadmap portal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
