@@ -1,0 +1,1355 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
+<title>SkillBridge AI — My Roadmap</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#7865F5",
+          "primary-container": "#6350E6",
+          "primary-fixed": "#EEEAFE",
+          "on-primary": "#ffffff",
+          "secondary": "#546500",
+          "secondary-container": "#D7F36A",
+          "on-secondary-fixed": "#17152E",
+          "surface": "#FAF9F6",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-low": "#F4F3F8",
+          "surface-container": "#EEEAFE",
+          "surface-container-high": "#E5E1FA",
+          "surface-container-highest": "#DDD8F6",
+          "on-surface": "#17152E",
+          "on-surface-variant": "#4E4B66",
+          "tertiary": "#6E6B87",
+          "outline-variant": "#D9D5EC",
+          "midnight": "#17152E",
+          "violet": "#7865F5",
+          "lavender": "#EEEAFE",
+          "lime": "#D7F36A"
+        },
+        fontFamily: {
+          sans: ['Manrope', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        }
+      }
+    }
+  };
+</script>
+<style>
+  @layer base {
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #FAF9F6;
+      color: #17152E;
+      font-family: 'Manrope', sans-serif;
+    }
+    ::-webkit-scrollbar { display: none; }
+  }
+</style>
+</head>
+<body class="bg-[#FAF9F6] text-[#17152E] antialiased selection:bg-[#7865F5] selection:text-white min-h-screen flex flex-col justify-between">
+<!-- 1. Shared Exact 64px (h-16) Frosted Student Header Parity -->
+<header class="fixed top-0 left-0 w-full z-50 h-16 bg-white/90 backdrop-blur-md border-b border-[#EEEAFE] shadow-[0_2px_12px_rgba(23,21,46,0.03)]">
+<div class="max-w-[1440px] mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+<!-- Brand Logo & EDU Badge -->
+<div class="flex items-center gap-3">
+<a class="flex items-center gap-2.5 group" href="#">
+<div class="w-9 h-9 rounded-xl bg-[#7865F5] flex items-center justify-center text-white shadow-md shadow-[#7865F5]/20 transition-transform group-hover:scale-105">
+<span class="material-symbols-outlined text-xl">hub</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-extrabold text-lg text-[#17152E] tracking-tight">SkillBridge AI</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-[#EEEAFE] text-[#7865F5] tracking-wider uppercase">EDU</span>
+</div>
+</a>
+</div>
+<!-- Center Navigation -->
+<nav class="hidden lg:flex items-center gap-1.5 p-1 rounded-xl bg-[#F4F3F8] text-[13px] font-semibold text-[#4E4B66]">
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#17152E] hover:bg-white/70 transition-all" href="#">Home</a>
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#17152E] hover:bg-white/70 transition-all" href="#">Upload Resume</a>
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#17152E] hover:bg-white/70 transition-all" href="#">My Skills</a>
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#17152E] hover:bg-white/70 transition-all" href="#">Explore Careers</a>
+<a class="px-3.5 py-1.5 rounded-lg hover:text-[#17152E] hover:bg-white/70 transition-all" href="#">Skill Gap Analysis</a>
+<a aria-current="page" class="px-3.5 py-1.5 rounded-lg bg-[#7865F5] text-white shadow-sm font-semibold transition-all" href="#">My Roadmap</a>
+</nav>
+<!-- Right Profile / Student Avatar AS & Actions -->
+<div class="flex items-center gap-3">
+<button class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#EEEAFE] bg-white hover:bg-[#EEEAFE]/60 text-[#7865F5] text-xs font-semibold transition-all" onclick="openShareModal()">
+<span class="material-symbols-outlined text-sm">share</span>
+<span>Share</span>
+</button>
+<!-- Student Avatar 'AS' with active status dot and interactive dropdown -->
+<div class="relative group">
+<button class="flex items-center gap-2 p-1 pl-1.5 pr-2 rounded-full border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 transition-all focus:outline-none" id="avatarBtn" type="button">
+<div class="relative w-8 h-8 rounded-full bg-[#17152E] text-white flex items-center justify-center font-bold text-xs ring-2 ring-[#EEEAFE]">
+            AS
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#D7F36A] border-2 border-white rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-sm text-[#6E6B87] group-hover:rotate-180 transition-transform">expand_more</span>
+</button>
+<!-- Dropdown profile card -->
+<div class="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-[#EEEAFE] p-3.5 hidden group-hover:block transition-all z-50">
+<div class="flex items-center gap-3 pb-3 border-b border-[#F4F3F8]">
+<div class="w-10 h-10 rounded-full bg-[#17152E] text-white flex items-center justify-center font-bold text-sm">
+              AS
+            </div>
+<div>
+<div class="font-bold text-sm text-[#17152E]">Aarav Sharma</div>
+<div class="text-[11px] font-mono text-[#6E6B87]">B.Tech CSE '26</div>
+<div class="text-[11px] text-[#7865F5] font-medium">Apex Institute of Technology</div>
+</div>
+</div>
+<div class="pt-2 flex flex-col gap-1 text-xs text-[#4E4B66]">
+<a class="px-2 py-1.5 rounded-lg hover:bg-[#F4F3F8] flex items-center gap-2" href="#"><span class="material-symbols-outlined text-sm text-[#7865F5]">person</span>Student Profile</a>
+<a class="px-2 py-1.5 rounded-lg hover:bg-[#F4F3F8] flex items-center gap-2" href="#"><span class="material-symbols-outlined text-sm text-[#7865F5]">badge</span>Placement ID: APX-9042</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Slot -->
+<main class="w-full pt-20 pb-16 flex-grow">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-6">
+<!-- 2. Page Introduction & Target Role Banner -->
+<section class="bg-white rounded-2xl p-6 sm:p-8 border border-[#EEEAFE] shadow-sm relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-[#EEEAFE]/60 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+<div class="space-y-2 max-w-3xl">
+<!-- Target Role Pill with Actions -->
+<div class="flex flex-wrap items-center gap-2.5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEEAFE] text-[#7865F5] text-xs font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">route</span>
+              Learning path for QA Automation Engineer
+            </span>
+<span class="text-xs text-[#6E6B87]">|</span>
+<a class="text-xs font-semibold text-[#7865F5] hover:underline inline-flex items-center gap-0.5" href="#">
+              Change Target Role
+              <span class="material-symbols-outlined text-xs">tune</span>
+</a>
+<span class="text-xs text-[#6E6B87]">·</span>
+<a class="text-xs font-semibold text-[#4E4B66] hover:text-[#7865F5] transition-colors inline-flex items-center gap-0.5" href="#">
+              View Skill Gap Analysis
+              <span class="material-symbols-outlined text-xs">arrow_outward</span>
+</a>
+</div>
+<h1 class="text-3xl sm:text-4xl font-extrabold text-[#17152E] tracking-tight">
+            Your next steps, mapped out.
+          </h1>
+<p class="text-base text-[#4E4B66]">
+            Learn in the right order. Practise with purpose. Build evidence of your skills.
+          </p>
+</div>
+<!-- Quick Links / Return action button -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 flex-shrink-0">
+<a class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-[#EEEAFE] bg-[#FAF9F6] hover:bg-white text-xs font-bold text-[#17152E] transition-all" href="#">
+<span class="material-symbols-outlined text-base text-[#7865F5]">travel_explore</span>
+            Explore Other Careers
+          </a>
+<button class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#7865F5] hover:bg-[#6350E6] text-xs font-bold text-white shadow-sm transition-all shadow-[#7865F5]/25" onclick="openEvidenceModal()" type="button">
+<span class="material-symbols-outlined text-base">add_link</span>
+            Add Evidence
+          </button>
+</div>
+</div>
+<!-- Top Overview Card -->
+<div class="mt-6 pt-5 border-t border-[#F4F3F8] bg-[#FAF9F6] rounded-xl p-4 sm:p-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2.5">
+<div class="flex items-center gap-2.5">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#7865F5] text-white text-xs font-bold font-mono" id="completedTaskBadge">1</span>
+<span class="font-bold text-sm text-[#17152E]" id="taskCountText">1 of 5 Tasks Completed</span>
+<span class="hidden sm:inline text-[#6E6B87]">·</span>
+<span class="text-xs font-mono text-[#6E6B87]" id="effortRemainingText">~18 hours estimated effort remaining</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white border border-[#EEEAFE] text-[#6E6B87]">Prototype / Illustrative Data</span>
+<span class="text-sm font-extrabold font-mono text-[#7865F5]" id="percentageLabel">20% Completed</span>
+</div>
+</div>
+<!-- Dynamic Overall Progress Track -->
+<div class="w-full h-3 rounded-full bg-[#DDD8F6] overflow-hidden relative">
+<div class="h-full bg-gradient-to-r from-[#D7F36A] to-[#7865F5] transition-all duration-500 ease-out rounded-full shadow-[0_0_8px_rgba(120,101,245,0.4)]" id="overallProgressBar" style="width: 20%;"></div>
+</div>
+<!-- Milestone labels -->
+<div class="flex flex-wrap items-center justify-between text-xs text-[#4E4B66] pt-3">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 text-[#546500] font-semibold">
+<span class="material-symbols-outlined text-sm text-[#546500]">check_circle</span>
+<span id="breakdownCompleted">Stage 1: Learn the Foundations (Completed)</span>
+</span>
+<span>·</span>
+<span class="inline-flex items-center gap-1 text-[#7865F5] font-semibold">
+<span class="w-2 h-2 rounded-full bg-[#7865F5] animate-ping"></span>
+<span id="breakdownActive">Stage 2: Practise Priority Skills (Active)</span>
+</span>
+<span>·</span>
+<span class="text-[#6E6B87]" id="breakdownUpcoming">Stage 3: Build and Demonstrate (Upcoming)</span>
+</div>
+<!-- Fast Jump Tabs -->
+<div class="flex items-center gap-1.5 font-semibold text-[11px]">
+<a class="px-2 py-1 rounded hover:bg-[#EEEAFE] text-[#4E4B66] hover:text-[#7865F5] transition-colors" href="#stage1">Stage 1: Foundations</a>
+<a class="px-2 py-1 rounded bg-[#EEEAFE] text-[#7865F5]" href="#stage2">Stage 2: Priority Gaps</a>
+<a class="px-2 py-1 rounded hover:bg-[#EEEAFE] text-[#4E4B66] hover:text-[#7865F5] transition-colors" href="#stage3">Stage 3: Capstone</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. PRIMARY SEGMENTED TOGGLE (Directly below overview card) -->
+<div class="flex justify-center -my-1">
+<div class="inline-flex items-center p-1.5 rounded-2xl bg-white border border-[#EEEAFE] shadow-sm gap-1.5" role="tablist">
+<button aria-controls="view-roadmap" aria-selected="true" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#7865F5] text-white shadow-sm font-semibold text-xs sm:text-sm transition-all" id="toggleBtnRoadmap" onclick="switchView('roadmap')" role="tab">
+<span class="material-symbols-outlined text-base">route</span>
+<span>Roadmap</span>
+</button>
+<button aria-controls="view-resources" aria-selected="false" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-[#4E4B66] hover:text-[#7865F5] hover:bg-[#EEEAFE] font-semibold text-xs sm:text-sm transition-all" id="toggleBtnResources" onclick="switchView('resources')" role="tab">
+<span class="material-symbols-outlined text-base">library_books</span>
+<span>Resources</span>
+<span class="ml-0.5 px-1.5 py-0.2 rounded-full bg-[#EEEAFE] text-[#7865F5] text-[10px] font-bold">10</span>
+</button>
+</div>
+</div>
+<!-- ========================================================================= -->
+<!-- 4. ROADMAP VIEW (#view-roadmap)                                           -->
+<!-- ========================================================================= -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start transition-opacity duration-300" id="view-roadmap">
+<!-- Left: Visual Learning Journey (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-8 relative">
+<!-- Continuous Vertical Connector Line -->
+<div class="absolute left-6 md:left-7 top-10 bottom-12 w-0.5 bg-[#DDD8F6] -z-0">
+<div class="w-full bg-[#7865F5] transition-all duration-700" id="timelineLineProgress" style="height: 30%;"></div>
+</div>
+<!-- ================= STAGE 1: Learn the Foundations ================= -->
+<section class="relative z-10 flex flex-col gap-4" id="stage1">
+<div class="flex items-center gap-2.5 ml-2">
+<span class="px-2.5 py-1 rounded-md bg-[#EEEAFE] text-[#7865F5] text-xs font-extrabold uppercase tracking-wider font-mono">Stage 1</span>
+<h2 class="text-base font-extrabold text-[#17152E]">Learn the Foundations</h2>
+<span class="text-xs text-[#6E6B87]">(Build core testing fundamentals)</span>
+</div>
+<!-- Task 1.1: Completed -->
+<article class="flex items-start gap-4" id="taskCard-1">
+<div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-sm border border-[#EEEAFE] flex items-center justify-center text-[#546500]">
+<div class="w-8 h-8 rounded-xl bg-[#D7F36A]/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg font-bold">check</span>
+</div>
+</div>
+<div class="flex-grow bg-white rounded-2xl p-5 border border-[#EEEAFE] shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#D7F36A]/50 text-[#17152E] text-[11px] font-bold">
+<span class="material-symbols-outlined text-xs text-[#546500]">verified</span>
+                  Completed · Verified via Coursework CS210 &amp; GitHub
+                </span>
+<span class="font-mono text-xs text-[#6E6B87]">Task 1.1</span>
+</div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="text-base font-extrabold text-[#17152E]">Software Testing Fundamentals &amp; PyTest Assertions</h3>
+<p class="text-xs text-[#4E4B66] mt-1 leading-relaxed">
+                    Black-box vs white-box verification, deterministic assertion design, test fixtures, and parameterized execution across suites.
+                  </p>
+</div>
+<button class="p-1 rounded text-[#6E6B87] hover:text-[#17152E] hover:bg-[#F4F3F8]" onclick="toggleAccordion('task-1-details', this)" type="button">
+<span class="material-symbols-outlined text-lg transition-transform">expand_more</span>
+</button>
+</div>
+<!-- Accordion content -->
+<div class="mt-3 pt-3 border-t border-[#F4F3F8] space-y-2.5" id="task-1-details">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+<div class="p-2.5 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] flex items-center gap-2">
+<span class="material-symbols-outlined text-[#546500] text-base">fact_check</span>
+<span>Lab Review: <strong class="font-mono text-[#546500]">94% Score (CS210)</strong></span>
+</div>
+<div class="p-2.5 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] flex items-center justify-between">
+<span class="flex items-center gap-1.5 text-[#4E4B66]">
+<span class="material-symbols-outlined text-[#7865F5] text-base">link</span>
+                      github.com/aarav-cs/pytest-fixtures
+                    </span>
+<a class="text-[#7865F5] font-semibold hover:underline text-[11px] flex items-center" href="#">Evidence <span class="material-symbols-outlined text-xs">open_in_new</span></a>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#F4F3F8]">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#EEEAFE] hover:bg-[#E5E1FA] text-[#7865F5] text-xs font-bold transition-colors" onclick="switchView('resources', 'step-1-resources')">
+<span class="material-symbols-outlined text-sm">library_books</span>
+<span>View Step Resources (3) ↗</span>
+</button>
+<label class="inline-flex items-center gap-1.5 cursor-pointer text-[11px] font-semibold text-[#4E4B66]">
+<input checked="" class="rounded text-[#7865F5] focus:ring-[#7865F5]" onchange="toggleTaskCompletion(1, this)" type="checkbox">
+                    Marked Complete
+                  </label>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- ================= STAGE 2: Practise Priority Skills ================= -->
+<section class="relative z-10 flex flex-col gap-4" id="stage2">
+<div class="flex items-center gap-2.5 ml-2">
+<span class="px-2.5 py-1 rounded-md bg-[#7865F5] text-white text-xs font-extrabold uppercase tracking-wider font-mono">Stage 2</span>
+<h2 class="text-base font-extrabold text-[#17152E]">Practise Priority Skills</h2>
+<span class="text-xs text-[#6E6B87]">(Close 3 critical gaps from Skill Gap Analysis)</span>
+</div>
+<!-- Task 2.1: ACTIVE (Playwright & Browser Automation) -->
+<article class="flex items-start gap-4" id="taskCard-2">
+<!-- Active Node Icon with pulsing ring -->
+<div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#7865F5] text-white shadow-lg shadow-[#7865F5]/30 flex items-center justify-center relative">
+<span class="absolute -inset-1 rounded-2xl bg-[#7865F5]/20 animate-pulse -z-10"></span>
+<div class="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">bolt</span>
+</div>
+</div>
+<div class="flex-grow bg-white rounded-2xl p-5 border-2 border-[#7865F5]/50 shadow-md relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-[#D7F36A]/20 rounded-bl-full pointer-events-none"></div>
+<div class="relative z-10">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#D7F36A] text-[#17152E] text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#7865F5] animate-ping"></span>
+                      Active / In Progress
+                    </span>
+<span class="px-2 py-0.5 rounded bg-[#EEEAFE] text-[#7865F5] text-[11px] font-bold font-mono">Priority Gap -52% Delta</span>
+</div>
+<span class="font-mono text-xs text-[#6E6B87] flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span> ~8 hrs remaining
+                  </span>
+</div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="text-base font-extrabold text-[#17152E]">2.1 Playwright &amp; Modern Browser Automation</h3>
+<p class="text-xs text-[#4E4B66] mt-1 leading-relaxed">
+                      Target skill: <strong>Selenium &amp; Playwright Automation</strong>. Script modern end-to-end user flows, handle auto-waiting selectors, network stubbing, and cross-browser headless suites (Chromium/WebKit).
+                    </p>
+</div>
+</div>
+<!-- Hands-on Deliverable + Curated Sandbox Block -->
+<div class="mt-4 space-y-2.5">
+<div class="p-3 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-white border border-[#EEEAFE] flex items-center justify-center text-[#7865F5]">
+<span class="material-symbols-outlined text-base">terminal</span>
+</div>
+<div>
+<div class="text-xs font-bold text-[#17152E]">Hands-on Exercise: E-Commerce Checkout Validation</div>
+<div class="text-[11px] text-[#6E6B87]">Verify login, basket arithmetic, idempotency &amp; video artifacts (`e2e_checkout_spec.py`).</div>
+</div>
+</div>
+<button class="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg bg-[#EEEAFE] hover:bg-[#E5E1FA] text-[#7865F5] text-xs font-bold transition-colors" onclick="openSandboxModal()" type="button">
+<span class="material-symbols-outlined text-sm">play_arrow</span> Launch Code Sandbox
+                    </button>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2 text-xs text-[#6E6B87] pt-1">
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#EEEAFE] hover:bg-[#E5E1FA] text-[#7865F5] text-xs font-bold transition-colors" onclick="switchView('resources', 'step-2-resources')">
+<span class="material-symbols-outlined text-sm">library_books</span>
+<span>View Step Resources (3) ↗</span>
+</button>
+<span class="font-mono text-[11px]">Related: Selenium &amp; Playwright (Missing in Resume)</span>
+</div>
+</div>
+<!-- Action row -->
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#7865F5] hover:bg-[#6350E6] text-white text-xs font-bold transition-all shadow-sm" id="task2Btn" onclick="toggleTaskCompletion(2, this)" type="button">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span id="task2BtnText">Mark as Complete</span>
+</button>
+<button class="inline-flex items-center gap-1 px-3 py-2 rounded-xl border border-[#EEEAFE] hover:bg-[#FAF9F6] text-xs font-semibold text-[#4E4B66]" onclick="openEvidenceModal('Task 2.1: Playwright Test Automation')" type="button">
+<span class="material-symbols-outlined text-sm text-[#7865F5]">attach_file</span>
+                      Attach Evidence
+                    </button>
+</div>
+<span class="text-[11px] font-mono text-[#6E6B87]">Evidence reviewed separately for verification</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Task 2.2: Upcoming / Next (REST API Testing) -->
+<article class="flex items-start gap-4" id="taskCard-3">
+<div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-sm border border-[#EEEAFE] flex items-center justify-center text-[#6E6B87]" id="task3IconContainer">
+<span class="material-symbols-outlined text-lg" id="task3Icon">schedule</span>
+</div>
+<div class="flex-grow bg-white rounded-2xl p-5 border border-[#EEEAFE] shadow-sm">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#F4F3F8] text-[#6E6B87] text-[11px] font-bold" id="task3Badge">
+<span class="material-symbols-outlined text-xs">schedule</span> Upcoming / Next
+                  </span>
+<span class="px-2 py-0.5 rounded bg-[#EEEAFE] text-[#7865F5] text-[11px] font-bold font-mono">Developing -35% Delta</span>
+</div>
+<span class="font-mono text-xs text-[#6E6B87]">~5 hours effort</span>
+</div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="text-base font-extrabold text-[#17152E]">2.2 REST API Testing &amp; Assertion Suites</h3>
+<p class="text-xs text-[#4E4B66] mt-1 leading-relaxed">
+                    Target skill: <strong>API Testing &amp; Postman</strong>. Construct automated endpoint test suites using Python Requests &amp; pytest-mock. Validate status codes, JSON schema conformity, auth tokens, and latency SLAs.
+                  </p>
+</div>
+<button class="p-1 rounded text-[#6E6B87] hover:text-[#17152E] hover:bg-[#F4F3F8]" onclick="toggleAccordion('task-3-details', this)" type="button">
+<span class="material-symbols-outlined text-lg transition-transform">expand_more</span>
+</button>
+</div>
+<div class="mt-3 pt-3 border-t border-[#F4F3F8] space-y-2.5" id="task-3-details">
+<div class="p-3 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] text-xs text-[#4E4B66] flex flex-col gap-1.5">
+<div class="font-bold text-[#17152E] flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-[#7865F5]">api</span>
+                    Practice Scope
+                  </div>
+<div>15 API route automated validation tests using Postman collections + python-requests CLI runner.</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2 text-xs pt-1">
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#EEEAFE] hover:bg-[#E5E1FA] text-[#7865F5] text-xs font-bold transition-colors" onclick="switchView('resources', 'step-3-resources')">
+<span class="material-symbols-outlined text-sm">library_books</span>
+<span>View Step Resources (2) ↗</span>
+</button>
+<button class="text-[#7865F5] font-semibold hover:underline flex items-center gap-1" onclick="openEvidenceModal('Task 2.2: REST API Testing')" type="button">
+<span class="material-symbols-outlined text-xs">add</span> Add Project Evidence
+  </button>
+</div>
+<label class="inline-flex items-center gap-1.5 cursor-pointer text-[11px] font-semibold text-[#4E4B66]">
+<input class="rounded text-[#7865F5] focus:ring-[#7865F5]" onchange="toggleTaskCompletion(3, this)" type="checkbox">
+                    Mark Complete
+                  </label>
+</div>
+</div>
+</div>
+</article>
+<!-- Task 2.3: Upcoming (CI/CD Test Pipeline with GitHub Actions) -->
+<article class="flex items-start gap-4" id="taskCard-4">
+<div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-sm border border-[#EEEAFE] flex items-center justify-center text-[#6E6B87]" id="task4IconContainer">
+<span class="material-symbols-outlined text-lg" id="task4Icon">sync</span>
+</div>
+<div class="flex-grow bg-white rounded-2xl p-5 border border-[#EEEAFE] shadow-sm">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#F4F3F8] text-[#6E6B87] text-[11px] font-bold" id="task4Badge">
+<span class="material-symbols-outlined text-xs">hourglass_empty</span> Upcoming
+                  </span>
+<span class="px-2 py-0.5 rounded bg-[#FAF9F6] border border-[#EEEAFE] text-[#6E6B87] text-[11px] font-bold font-mono">Missing Evidence</span>
+</div>
+<span class="font-mono text-xs text-[#6E6B87]">~4 hours effort</span>
+</div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="text-base font-extrabold text-[#17152E]">2.3 CI/CD Test Pipeline with GitHub Actions</h3>
+<p class="text-xs text-[#4E4B66] mt-1 leading-relaxed">
+                    Target skill: <strong>CI/CD &amp; GitHub Actions</strong>. Configure workflow `.github/workflows/e2e.yml` to trigger automated headless test runs on pull requests, matrix across Python versions, and upload test artifacts.
+                  </p>
+</div>
+<button class="p-1 rounded text-[#6E6B87] hover:text-[#17152E] hover:bg-[#F4F3F8]" onclick="toggleAccordion('task-4-details', this)" type="button">
+<span class="material-symbols-outlined text-lg transition-transform">expand_more</span>
+</button>
+</div>
+<div class="mt-3 pt-3 border-t border-[#F4F3F8] space-y-2.5" id="task-4-details">
+<div class="p-3 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] text-xs text-[#4E4B66]">
+                  YAML configuration template for PR checks, caching pip dependencies, and Slack notifications on build failure.
+                </div>
+<div class="flex flex-wrap items-center justify-between gap-2 text-xs pt-1">
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#EEEAFE] hover:bg-[#E5E1FA] text-[#7865F5] text-xs font-bold transition-colors" onclick="switchView('resources', 'step-4-resources')">
+<span class="material-symbols-outlined text-sm">library_books</span>
+<span>View Step Resources (2) ↗</span>
+</button>
+<button class="text-[#7865F5] font-semibold hover:underline flex items-center gap-1" onclick="openEvidenceModal('Task 2.3: CI/CD Pipeline')" type="button">
+<span class="material-symbols-outlined text-xs">add</span> Add Evidence
+  </button>
+</div>
+<label class="inline-flex items-center gap-1.5 cursor-pointer text-[11px] font-semibold text-[#4E4B66]">
+<input class="rounded text-[#7865F5] focus:ring-[#7865F5]" onchange="toggleTaskCompletion(4, this)" type="checkbox">
+                    Mark Complete
+                  </label>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- ================= STAGE 3: Build and Demonstrate ================= -->
+<section class="relative z-10 flex flex-col gap-4" id="stage3">
+<div class="flex items-center gap-2.5 ml-2">
+<span class="px-2.5 py-1 rounded-md bg-[#17152E] text-white text-xs font-extrabold uppercase tracking-wider font-mono">Stage 3</span>
+<h2 class="text-base font-extrabold text-[#17152E]">Build and Demonstrate</h2>
+<span class="text-xs text-[#6E6B87]">(Capstone portfolio asset for Tier-1 placements)</span>
+</div>
+<!-- Task 3.1: Capstone -->
+<article class="flex items-start gap-4" id="taskCard-5">
+<div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-white shadow-sm border border-[#EEEAFE] flex items-center justify-center text-[#7865F5]" id="task5IconContainer">
+<div class="w-8 h-8 rounded-xl bg-[#EEEAFE] flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">military_tech</span>
+</div>
+</div>
+<div class="flex-grow bg-white rounded-2xl p-5 border border-[#EEEAFE] shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+<span class="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-[#EEEAFE] text-[#7865F5] text-[11px] font-extrabold">
+<span class="material-symbols-outlined text-xs">workspace_premium</span>
+                  Capstone Portfolio Project
+                </span>
+<span class="font-mono text-xs text-[#546500] font-bold">Tier-1 Recruiter Asset</span>
+</div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="text-base font-extrabold text-[#17152E]">3.1 End-to-End Cloud Test Automation Framework</h3>
+<p class="text-xs text-[#4E4B66] mt-1 leading-relaxed">
+                    Deploy an end-to-end cloud test framework combining <strong>PyTest + Playwright + GitHub Actions + Allure Reports</strong> hosted on GitHub Pages. Direct proof of real-world test engineering capability.
+                  </p>
+</div>
+<button class="p-1 rounded text-[#6E6B87] hover:text-[#17152E] hover:bg-[#F4F3F8]" onclick="toggleAccordion('task-5-details', this)" type="button">
+<span class="material-symbols-outlined text-lg transition-transform">expand_more</span>
+</button>
+</div>
+<div class="mt-4 space-y-3" id="task-5-details">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+<div class="p-3 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE]">
+<div class="font-bold text-[#17152E] mb-1">Deliverable</div>
+<div class="text-[#4E4B66]">Public GitHub repository with automated test execution badges, video recordings, and Allure HTML dashboards.</div>
+</div>
+<div class="p-3 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE]">
+<div class="font-bold text-[#17152E] mb-1">Recruiter Multiplier</div>
+<div class="text-[#4E4B66]">Directly evaluated during campus drive shortlisting for SDET and QA Engineer roles.</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#F4F3F8] text-xs">
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#EEEAFE] hover:bg-[#E5E1FA] text-[#7865F5] text-xs font-bold transition-colors" onclick="switchView('resources', 'step-4-resources')">
+<span class="material-symbols-outlined text-sm">library_books</span>
+<span>View Capstone Docs ↗</span>
+</button>
+<button class="inline-flex items-center gap-1 text-[#7865F5] font-semibold hover:underline" onclick="openEvidenceModal('Task 3.1: Cloud Test Framework Capstone')" type="button">
+<span class="material-symbols-outlined text-sm">link</span> Submit Portfolio Repo Link
+  </button>
+</div>
+<label class="inline-flex items-center gap-1.5 cursor-pointer text-[11px] font-semibold text-[#4E4B66]">
+<input class="rounded text-[#7865F5] focus:ring-[#7865F5]" onchange="toggleTaskCompletion(5, this)" type="checkbox">
+                    Mark Complete
+                  </label>
+</div>
+</div>
+</div>
+</article>
+</section>
+</div>
+<!-- Right Column: Sidebar (4 cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-6 sticky top-20">
+<!-- Active Learning Sprint Card -->
+<div class="bg-white rounded-2xl p-5 border border-[#EEEAFE] shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-extrabold uppercase tracking-wider text-[#6E6B87] font-mono">Active Learning Sprint</span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#D7F36A] border-2 border-white ring-1 ring-[#D7F36A]"></span>
+</div>
+<h3 class="text-base font-extrabold text-[#17152E]">Browser Automation Sandbox</h3>
+<p class="text-xs text-[#4E4B66] mt-1 mb-3">
+            Module 2, Section 3: "Dynamic Selector Auto-Waiting &amp; Interception in Playwright".
+          </p>
+<!-- Snippet preview -->
+<div class="p-3 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] font-mono text-[11px] text-[#4E4B66] space-y-1 mb-3">
+<div class="text-[#7865F5]">await page.goto('/checkout')</div>
+<div class="text-[#546500]">await expect(page.locator('#order-btn')).to_be_visible()</div>
+<div class="text-[#6E6B87]"># Verify cart calculation assertions...</div>
+</div>
+<button class="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#7865F5] hover:bg-[#6350E6] text-white text-xs font-bold transition-all shadow-sm shadow-[#7865F5]/25" onclick="openSandboxModal()" type="button">
+<span class="material-symbols-outlined text-base">play_circle</span>
+            Launch Code Sandbox
+          </button>
+<div class="text-center text-[11px] text-[#6E6B87] mt-2 font-mono">
+            Last session sync: Today at 2:14 PM
+          </div>
+</div>
+<!-- Target Skill Coverage Connected to Skill Gap Analysis -->
+<div class="bg-white rounded-2xl p-5 border border-[#EEEAFE] shadow-sm">
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-sm font-extrabold text-[#17152E]">Target Skill Coverage</h3>
+<span class="text-xs font-mono font-bold text-[#7865F5]">QA Automation</span>
+</div>
+<p class="text-[11px] text-[#6E6B87] mb-3">
+            Connected to Skill Gap Analysis criteria for Apex campus drive.
+          </p>
+<div class="space-y-3">
+<!-- Skill 1 -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="font-medium text-[#17152E] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#546500] text-sm">check_circle</span>
+                  PyTest Suite Design
+                </span>
+<span class="font-mono text-xs font-bold text-[#546500]">100%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-[#EEEAFE]">
+<div class="h-full bg-[#546500] rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Skill 2 -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="font-medium text-[#17152E] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#7865F5] text-sm">pending</span>
+                  Selenium &amp; Playwright
+                </span>
+<span class="font-mono text-xs font-bold text-[#7865F5]" id="skillPlaywrightVal">45%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-[#EEEAFE]">
+<div class="h-full bg-[#7865F5] rounded-full transition-all duration-500" id="skillPlaywrightBar" style="width: 45%;"></div>
+</div>
+</div>
+<!-- Skill 3 -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="font-medium text-[#17152E] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#6E6B87] text-sm">schedule</span>
+                  API Testing &amp; Postman
+                </span>
+<span class="font-mono text-xs text-[#6E6B87]" id="skillApiVal">35%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-[#EEEAFE]">
+<div class="h-full bg-[#6E6B87] rounded-full transition-all duration-500" id="skillApiBar" style="width: 35%;"></div>
+</div>
+</div>
+<!-- Skill 4 -->
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="font-medium text-[#17152E] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[#6E6B87] text-sm">schedule</span>
+                  CI/CD &amp; GitHub Actions
+                </span>
+<span class="font-mono text-xs text-[#6E6B87]" id="skillCicdVal">0%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-[#EEEAFE]">
+<div class="h-full bg-[#DDD8F6] rounded-full transition-all duration-500" id="skillCicdBar" style="width: 0%;"></div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-between text-xs">
+<span class="text-[#6E6B87]">Target Readiness: 92%</span>
+<span class="font-mono font-bold text-[#7865F5]" id="currentReadinessVal">Current: 50%</span>
+</div>
+</div>
+<!-- Career Mentor Support Mini-Widget -->
+<div class="bg-[#FAF9F6] rounded-2xl p-5 border border-[#EEEAFE] flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<img alt="Dr. Priya Sharma" class="w-11 h-11 rounded-full object-cover ring-2 ring-[#7865F5]/30 flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-RDr5pXmoxry--yLclucdD1xxGMri4Cg7_ekWxx4sOtcB4NIxhqapL_3lIOiP_mpTkvoZXBEdKJEo2HpruCzCF--ZBhQnnoQuUetOMxdsrvj1NJpGJ7tgdsXovlrmJIrdOFsVyYQqudQ59DdtWtTg1LFpRjK3Ef_L8y-6AtqAe_eJxyM1vfaLXYQpwHKBIAG6Lbpst55X2ENmH4LWjxlsAHFDsf3hcwugclpPt00tMazu5LBQqRJr">
+<div>
+<div class="text-xs font-bold text-[#17152E]">Dr. Priya Sharma</div>
+<div class="text-[11px] text-[#6E6B87]">Assigned Career Advisor · Apex</div>
+</div>
+</div>
+<p class="text-xs text-[#4E4B66] leading-relaxed italic">
+            "Great work on passing the PyTest lab. Once your Playwright checkout test runs reliably, share the repo link with me for mock technical feedback."
+          </p>
+<a class="w-full py-2 rounded-xl bg-white hover:bg-[#EEEAFE] text-[#7865F5] border border-[#EEEAFE] text-xs font-bold transition-colors text-center inline-block" href="#">
+            Message Advisor
+          </a>
+</div>
+<!-- Recruiter Visibility Banner in sidebar -->
+<div class="rounded-2xl bg-gradient-to-r from-[#17152E] to-[#2B2754] p-4 text-white shadow-md flex items-center justify-between gap-3">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#D7F36A] flex-shrink-0">
+<span class="material-symbols-outlined text-xl">trending_up</span>
+</div>
+<div>
+<h4 class="text-xs font-extrabold text-white">Recruiter Visibility Multiplier</h4>
+<p class="text-[10px] text-white/80">+22% boost with verified evidence</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#D7F36A] text-[#17152E] font-mono text-xs font-bold whitespace-nowrap" id="visibilityIndexPill">
+  Index: 76 / 100
+</span>
+</div>
+</aside>
+</div>
+<!-- ========================================================================= -->
+<!-- 5. RESOURCES VIEW (#view-resources)                                       -->
+<!-- ========================================================================= -->
+<div class="hidden flex-col gap-8 transition-opacity duration-300" id="view-resources">
+<!-- Resources Library Header Card -->
+<section class="bg-white rounded-2xl p-6 sm:p-8 border border-[#EEEAFE] shadow-sm relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-[#D7F36A]/15 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 space-y-4">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEEAFE] text-[#7865F5] text-xs font-bold uppercase tracking-wider mb-2">
+<span class="material-symbols-outlined text-sm">verified</span>
+            Curated Free-First Learning
+          </div>
+<h2 class="text-2xl sm:text-3xl font-extrabold text-[#17152E] tracking-tight">Free-First Curated Resource Library</h2>
+<p class="text-sm text-[#4E4B66] mt-1 max-w-3xl">
+            Hand-picked, high-yield learning resources mapped directly to your QA Automation Engineer roadmap. Verified free access and clear certification tiers.
+          </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#D7F36A]/40 text-[#546500] text-xs font-bold font-mono">
+<span class="material-symbols-outlined text-sm">lock_open</span> 100% Verified Free Tiers
+          </span>
+</div>
+</div>
+<!-- Filter Pills -->
+<div class="pt-3 border-t border-[#F4F3F8] flex flex-wrap items-center gap-2" id="resourceFilterContainer">
+<button class="resource-filter-btn px-3.5 py-1.5 rounded-xl bg-[#7865F5] text-white text-xs font-bold transition-all shadow-sm" onclick="filterResources('all', this)">
+          All Resources (10)
+        </button>
+<button class="resource-filter-btn px-3.5 py-1.5 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] text-[#4E4B66] hover:text-[#7865F5] hover:bg-white text-xs font-semibold transition-all" onclick="filterResources('free', this)">
+          Free Learning (8)
+        </button>
+<button class="resource-filter-btn px-3.5 py-1.5 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] text-[#4E4B66] hover:text-[#7865F5] hover:bg-white text-xs font-semibold transition-all" onclick="filterResources('cert', this)">
+          Free Certificates (3)
+        </button>
+<button class="resource-filter-btn px-3.5 py-1.5 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] text-[#4E4B66] hover:text-[#7865F5] hover:bg-white text-xs font-semibold transition-all" onclick="filterResources('video', this)">
+          Video Playlists (3)
+        </button>
+<button class="resource-filter-btn px-3.5 py-1.5 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] text-[#4E4B66] hover:text-[#7865F5] hover:bg-white text-xs font-semibold transition-all" onclick="filterResources('practice', this)">
+          Practice &amp; Projects (4)
+        </button>
+</div>
+</div>
+</section>
+<!-- Expandable Grouped Sections by Roadmap Step -->
+<div class="space-y-6">
+<!-- STEP 1 RESOURCES -->
+<div class="bg-white rounded-2xl border border-[#EEEAFE] shadow-sm overflow-hidden" id="step-1-resources">
+<div class="p-5 bg-[#FAF9F6] border-b border-[#EEEAFE] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-lg bg-[#D7F36A]/50 text-[#17152E] font-bold text-xs font-mono flex items-center justify-center">01</span>
+<div>
+<h3 class="text-base font-extrabold text-[#17152E]">STEP 1 RESOURCES: Software Testing &amp; PyTest (Foundations)</h3>
+<p class="text-xs text-[#6E6B87]">Corresponds to Roadmap Task 1.1 · Test fixtures, assertions, and parameterized execution</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-white border border-[#EEEAFE] text-[11px] font-mono text-[#7865F5] font-bold">3 Resources</span>
+</div>
+<div class="p-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Resource 1 -->
+<div class="resource-card flex flex-col justify-between p-4 rounded-xl border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 hover:shadow-md transition-all" data-tags="free doc step1">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-[#D7F36A]/40 text-[#546500] font-bold text-[10px] font-mono">100% Free</span>
+<span class="px-2 py-0.5 rounded-md bg-[#F4F3F8] text-[#4E4B66] text-[10px] font-semibold">Official Documentation</span>
+</div>
+<h4 class="font-bold text-sm text-[#17152E] leading-snug">Official Pytest Documentation &amp; Fixture Guide</h4>
+<div class="text-[11px] text-[#6E6B87] font-medium">Provider: <span class="text-[#17152E] font-semibold">Pytest.org</span> · Step 1</div>
+<p class="text-xs text-[#4E4B66] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#EEEAFE]/60 italic leading-relaxed">
+              "Why: Industry gold standard syntax and parametrization guide."
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-between">
+<span class="text-[11px] text-[#546500] font-bold flex items-center gap-1 font-mono">
+<span class="material-symbols-outlined text-xs">check_circle</span> Saved to Step 1 ✓
+            </span>
+<a class="inline-flex items-center gap-1 text-xs font-bold text-[#7865F5] hover:underline" href="https://docs.pytest.org" rel="noopener noreferrer" target="_blank">
+              Open Resource <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Resource 2 -->
+<div class="resource-card flex flex-col justify-between p-4 rounded-xl border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 hover:shadow-md transition-all" data-tags="free video step1">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-[#D7F36A]/40 text-[#546500] font-bold text-[10px] font-mono">100% Free</span>
+<span class="px-2 py-0.5 rounded-md bg-[#F4F3F8] text-[#4E4B66] text-[10px] font-semibold">Video Playlist · 4.5 hrs</span>
+</div>
+<h4 class="font-bold text-sm text-[#17152E] leading-snug">Python Testing with Pytest by freeCodeCamp</h4>
+<div class="text-[11px] text-[#6E6B87] font-medium">Provider: <span class="text-[#17152E] font-semibold">freeCodeCamp</span> · Step 1</div>
+<p class="text-xs text-[#4E4B66] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#EEEAFE]/60 italic leading-relaxed">
+              "Why: Zero-to-hero video walkthrough with practical assertion examples."
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-end">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-[#7865F5] hover:underline" href="https://www.youtube.com" rel="noopener noreferrer" target="_blank">
+              Open Resource <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Resource 3 -->
+<div class="resource-card flex flex-col justify-between p-4 rounded-xl border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 hover:shadow-md transition-all" data-tags="free cert step1">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-[#EEEAFE] text-[#7865F5] font-bold text-[10px] font-mono flex items-center gap-1">
+<span class="material-symbols-outlined text-[11px]">star</span> Free Certificate Included
+              </span>
+<span class="px-2 py-0.5 rounded-md bg-[#F4F3F8] text-[#4E4B66] text-[10px] font-semibold">Course · 2 hrs</span>
+</div>
+<h4 class="font-bold text-sm text-[#17152E] leading-snug">Pytest Course on TestAutomationU</h4>
+<div class="text-[11px] text-[#6E6B87] font-medium">Provider: <span class="text-[#17152E] font-semibold">Applitools TAU</span> · Step 1</div>
+<p class="text-xs text-[#4E4B66] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#EEEAFE]/60 italic leading-relaxed">
+              "Why: Free verified completion certificate and automated quizzes."
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-end">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-[#7865F5] hover:underline" href="https://testautomationu.applitools.com" rel="noopener noreferrer" target="_blank">
+              Open Resource <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 2 RESOURCES -->
+<div class="bg-white rounded-2xl border border-[#EEEAFE] shadow-sm overflow-hidden" id="step-2-resources">
+<div class="p-5 bg-[#FAF9F6] border-b border-[#EEEAFE] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-lg bg-[#7865F5] text-white font-bold text-xs font-mono flex items-center justify-center">02</span>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-base font-extrabold text-[#17152E]">STEP 2 RESOURCES: Playwright &amp; Browser Automation</h3>
+<span class="px-2 py-0.5 rounded bg-[#EEEAFE] text-[#7865F5] text-[10px] font-bold font-mono">Priority Gap -52%</span>
+</div>
+<p class="text-xs text-[#6E6B87]">Corresponds to Roadmap Task 2.1 · End-to-end user journeys, auto-waiting, headless runs</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-white border border-[#EEEAFE] text-[11px] font-mono text-[#7865F5] font-bold">3 Resources</span>
+</div>
+<div class="p-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Resource 4 -->
+<div class="resource-card flex flex-col justify-between p-4 rounded-xl border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 hover:shadow-md transition-all" data-tags="free doc step2">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-[#D7F36A]/40 text-[#546500] font-bold text-[10px] font-mono">100% Free</span>
+<span class="px-2 py-0.5 rounded-md bg-[#F4F3F8] text-[#4E4B66] text-[10px] font-semibold">Official Documentation</span>
+</div>
+<h4 class="font-bold text-sm text-[#17152E] leading-snug">Playwright for Python Official Getting Started</h4>
+<div class="text-[11px] text-[#6E6B87] font-medium">Provider: <span class="text-[#17152E] font-semibold">Microsoft</span> · Step 2</div>
+<p class="text-xs text-[#4E4B66] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#EEEAFE]/60 italic leading-relaxed">
+              "Why: Direct access to Trace Viewer, CodeGen locator tools, and headless configs."
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-between">
+<span class="text-[11px] text-[#546500] font-bold flex items-center gap-1 font-mono">
+<span class="material-symbols-outlined text-xs">check_circle</span> Saved to Step 2 ✓
+            </span>
+<a class="inline-flex items-center gap-1 text-xs font-bold text-[#7865F5] hover:underline" href="https://playwright.dev/python" rel="noopener noreferrer" target="_blank">
+              Open Resource <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Resource 5 -->
+<div class="resource-card flex flex-col justify-between p-4 rounded-xl border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 hover:shadow-md transition-all" data-tags="free video step2">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-[#D7F36A]/40 text-[#546500] font-bold text-[10px] font-mono">100% Free</span>
+<span class="px-2 py-0.5 rounded-md bg-[#F4F3F8] text-[#4E4B66] text-[10px] font-semibold">Video Playlist · 6 hrs</span>
+</div>
+<h4 class="font-bold text-sm text-[#17152E] leading-snug">Playwright Python End-to-End Tutorial Series</h4>
+<div class="text-[11px] text-[#6E6B87] font-medium">Provider: <span class="text-[#17152E] font-semibold">ExecuteAutomation (YouTube)</span> · Step 2</div>
+<p class="text-xs text-[#4E4B66] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#EEEAFE]/60 italic leading-relaxed">
+              "Why: Step-by-step page object models and async pytest plugins."
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-end">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-[#7865F5] hover:underline" href="https://www.youtube.com" rel="noopener noreferrer" target="_blank">
+              Open Resource <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Resource 6 -->
+<div class="resource-card flex flex-col justify-between p-4 rounded-xl border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 hover:shadow-md transition-all" data-tags="free practice step2">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-[#D7F36A]/40 text-[#546500] font-bold text-[10px] font-mono">100% Free</span>
+<span class="px-2 py-0.5 rounded-md bg-[#EEEAFE] text-[#7865F5] text-[10px] font-semibold">Practice &amp; Projects</span>
+</div>
+<h4 class="font-bold text-sm text-[#17152E] leading-snug">The Internet (Herokuapp) Automation Playground</h4>
+<div class="text-[11px] text-[#6E6B87] font-medium">Provider: <span class="text-[#17152E] font-semibold">Sauce Labs</span> · Step 2</div>
+<p class="text-xs text-[#4E4B66] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#EEEAFE]/60 italic leading-relaxed">
+              "Why: Safe real-world sandbox with dynamic loading, auth, and shadow DOM elements."
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-end">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-[#7865F5] hover:underline" href="https://the-internet.herokuapp.com" rel="noopener noreferrer" target="_blank">
+              Open Resource <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 3 RESOURCES -->
+<div class="bg-white rounded-2xl border border-[#EEEAFE] shadow-sm overflow-hidden" id="step-3-resources">
+<div class="p-5 bg-[#FAF9F6] border-b border-[#EEEAFE] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-lg bg-[#EEEAFE] text-[#7865F5] font-bold text-xs font-mono flex items-center justify-center">03</span>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-base font-extrabold text-[#17152E]">STEP 3 RESOURCES: REST API Testing &amp; Postman</h3>
+<span class="px-2 py-0.5 rounded bg-[#EEEAFE] text-[#7865F5] text-[10px] font-bold font-mono">Developing -35%</span>
+</div>
+<p class="text-xs text-[#6E6B87]">Corresponds to Roadmap Task 2.2 · Python Requests assertions and Postman suites</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-white border border-[#EEEAFE] text-[11px] font-mono text-[#7865F5] font-bold">2 Resources</span>
+</div>
+<div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Resource 7 -->
+<div class="resource-card flex flex-col justify-between p-4 rounded-xl border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 hover:shadow-md transition-all" data-tags="free cert step3">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-[#EEEAFE] text-[#7865F5] font-bold text-[10px] font-mono flex items-center gap-1">
+<span class="material-symbols-outlined text-[11px]">star</span> Free Certificate Included
+              </span>
+<span class="px-2 py-0.5 rounded-md bg-[#F4F3F8] text-[#4E4B66] text-[10px] font-semibold">Course · 3 hrs</span>
+</div>
+<h4 class="font-bold text-sm text-[#17152E] leading-snug">Postman Student Expert Program</h4>
+<div class="text-[11px] text-[#6E6B87] font-medium">Provider: <span class="text-[#17152E] font-semibold">Postman</span> · Step 3</div>
+<p class="text-xs text-[#4E4B66] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#EEEAFE]/60 italic leading-relaxed">
+              "Why: Official recognized Postman Student Expert credential with hands-on collection runs."
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-end">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-[#7865F5] hover:underline" href="https://academy.postman.com" rel="noopener noreferrer" target="_blank">
+              Open Resource <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Resource 8 -->
+<div class="resource-card flex flex-col justify-between p-4 rounded-xl border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 hover:shadow-md transition-all" data-tags="free practice step3">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-[#D7F36A]/40 text-[#546500] font-bold text-[10px] font-mono">100% Free</span>
+<span class="px-2 py-0.5 rounded-md bg-[#EEEAFE] text-[#7865F5] text-[10px] font-semibold">Practice &amp; Projects</span>
+</div>
+<h4 class="font-bold text-sm text-[#17152E] leading-snug">HTTPBin &amp; Python-Requests Mock Suite</h4>
+<div class="text-[11px] text-[#6E6B87] font-medium">Provider: <span class="text-[#17152E] font-semibold">Kenneth Reitz / Open Source</span> · Step 3</div>
+<p class="text-xs text-[#4E4B66] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#EEEAFE]/60 italic leading-relaxed">
+              "Why: Interactive HTTP endpoint tester for assertions, headers, and status code verification."
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-end">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-[#7865F5] hover:underline" href="https://httpbin.org" rel="noopener noreferrer" target="_blank">
+              Open Resource <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- STEP 4 & CAPSTONE RESOURCES -->
+<div class="bg-white rounded-2xl border border-[#EEEAFE] shadow-sm overflow-hidden" id="step-4-resources">
+<div class="p-5 bg-[#FAF9F6] border-b border-[#EEEAFE] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded-lg bg-[#17152E] text-white font-bold text-xs font-mono flex items-center justify-center">04</span>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-base font-extrabold text-[#17152E]">STEP 4 &amp; CAPSTONE RESOURCES: CI/CD &amp; Cloud Framework</h3>
+<span class="px-2 py-0.5 rounded bg-[#FAF9F6] border border-[#EEEAFE] text-[#6E6B87] text-[10px] font-bold font-mono">Missing Evidence</span>
+</div>
+<p class="text-xs text-[#6E6B87]">Corresponds to Tasks 2.3 &amp; 3.1 · Automated CI triggers, matrix testing &amp; Allure dashboards</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-white border border-[#EEEAFE] text-[11px] font-mono text-[#7865F5] font-bold">2 Resources</span>
+</div>
+<div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Resource 9 -->
+<div class="resource-card flex flex-col justify-between p-4 rounded-xl border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 hover:shadow-md transition-all" data-tags="free practice step4">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-[#D7F36A]/40 text-[#546500] font-bold text-[10px] font-mono">100% Free</span>
+<span class="px-2 py-0.5 rounded-md bg-[#EEEAFE] text-[#7865F5] text-[10px] font-semibold">Interactive Lab · 1.5 hrs</span>
+</div>
+<h4 class="font-bold text-sm text-[#17152E] leading-snug">GitHub Skills: Continuous Integration with Actions</h4>
+<div class="text-[11px] text-[#6E6B87] font-medium">Provider: <span class="text-[#17152E] font-semibold">GitHub</span> · Step 4</div>
+<p class="text-xs text-[#4E4B66] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#EEEAFE]/60 italic leading-relaxed">
+              "Why: Learn YAML workflows directly by committing to a sandbox repository."
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-end">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-[#7865F5] hover:underline" href="https://skills.github.com" rel="noopener noreferrer" target="_blank">
+              Open Resource <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Resource 10 -->
+<div class="resource-card flex flex-col justify-between p-4 rounded-xl border border-[#EEEAFE] bg-white hover:border-[#7865F5]/40 hover:shadow-md transition-all" data-tags="free doc step4 capstone">
+<div class="space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1.5">
+<span class="px-2 py-0.5 rounded-md bg-[#D7F36A]/40 text-[#546500] font-bold text-[10px] font-mono">100% Free</span>
+<span class="px-2 py-0.5 rounded-md bg-[#F4F3F8] text-[#4E4B66] text-[10px] font-semibold">Official Documentation</span>
+</div>
+<h4 class="font-bold text-sm text-[#17152E] leading-snug">Allure Report Framework Documentation &amp; Live Demos</h4>
+<div class="text-[11px] text-[#6E6B87] font-medium">Provider: <span class="text-[#17152E] font-semibold">Qameta Software</span> · Capstone</div>
+<p class="text-xs text-[#4E4B66] bg-[#FAF9F6] p-2.5 rounded-lg border border-[#EEEAFE]/60 italic leading-relaxed">
+              "Why: Visual reporting dashboards preferred by enterprise automation teams."
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#F4F3F8] flex items-center justify-end">
+<a class="inline-flex items-center gap-1 text-xs font-bold text-[#7865F5] hover:underline" href="https://allurereport.org" rel="noopener noreferrer" target="_blank">
+              Open Resource <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Return Banner -->
+<aside class="rounded-2xl bg-gradient-to-r from-[#EEEAFE] to-[#FAF9F6] border border-[#DDD8F6] p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-[#7865F5] text-white flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-2xl">route</span>
+</div>
+<div>
+<h4 class="text-sm font-extrabold text-[#17152E]">Ready to track your milestones?</h4>
+<p class="text-xs text-[#4E4B66]">Return to the interactive Roadmap view to mark steps complete and upload evidence.</p>
+</div>
+</div>
+<button class="px-5 py-2.5 rounded-xl bg-[#7865F5] hover:bg-[#6350E6] text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1.5 whitespace-nowrap" onclick="switchView('roadmap')">
+<span>Return to Roadmap View</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</aside>
+</div>
+</div>
+</main>
+<!-- Modal: Interactive Code Sandbox -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#17152E]/60 backdrop-blur-sm hidden" id="sandboxModal">
+<div class="w-full max-w-2xl mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden border border-[#EEEAFE]">
+<div class="flex items-center justify-between px-5 py-3.5 bg-[#F4F3F8] border-b border-[#EEEAFE]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#7865F5] text-lg">terminal</span>
+<span class="font-extrabold text-sm text-[#17152E]">Interactive Playwright Sandbox — Module 2.1</span>
+</div>
+<button class="p-1 rounded-lg text-[#6E6B87] hover:text-[#17152E] hover:bg-white transition-all" onclick="closeSandboxModal()" type="button">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<div class="p-5 flex flex-col gap-4">
+<div class="rounded-xl bg-[#17152E] text-white font-mono text-xs p-4 overflow-x-auto space-y-1">
+<div class="text-[#6E6B87]"># tests/test_ecommerce_checkout.py</div>
+<div class="text-[#D7F36A]">from playwright.sync_api import sync_playwright, expect</div>
+<div>def test_checkout_idempotency():</div>
+<div class="pl-4 text-[#EEEAFE]">with sync_playwright() as p:</div>
+<div class="pl-8 text-[#DDD8F6]">browser = p.chromium.launch(headless=True)</div>
+<div class="pl-8 text-white">page = browser.new_page()</div>
+<div class="pl-8 text-[#D7F36A]">page.goto('https://checkout.sandbox.internal')</div>
+<div class="pl-8 text-[#7865F5]">expect(page.locator('.summary')).to_be_visible()</div>
+</div>
+<div class="rounded-xl bg-[#0F0E1C] text-[#A7F3D0] font-mono text-xs p-4 h-32 overflow-y-auto space-y-1 shadow-inner" id="sandboxTerminal">
+<div class="text-[#6E6B87]">$ pytest tests/test_ecommerce_checkout.py -v</div>
+<div class="text-[#DDD8F6]">[playwright] Headless Chromium 126 initialized...</div>
+<div class="text-[#D7F36A] font-semibold hidden" id="sandboxSuccess1">✓ test_checkout_idempotency PASSED [0.78s]</div>
+<div class="text-white hidden" id="sandboxSuccess2">1 passed in 0.94s — Assertions valid.</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="text-xs text-[#6E6B87] flex items-center gap-1 font-mono">
+<span class="material-symbols-outlined text-sm text-[#546500]">check_circle</span> Browser engine online
+        </span>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#7865F5] hover:bg-[#6350E6] text-white text-xs font-bold transition-all shadow-sm" id="executeRunBtn" onclick="runSandboxTests()" type="button">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+<span>Execute Tests</span>
+</button>
+<button class="px-4 py-2 rounded-xl bg-[#F4F3F8] hover:bg-[#EEEAFE] text-[#17152E] text-xs font-bold transition-all" onclick="closeSandboxModal()" type="button">
+            Done
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal: Attach Project Evidence (Enhanced with Commit Hash & Mentorship note) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#17152E]/60 backdrop-blur-sm hidden" id="evidenceModal">
+<div class="w-full max-w-lg mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden border border-[#EEEAFE]">
+<div class="flex items-center justify-between px-5 py-3.5 bg-[#F4F3F8] border-b border-[#EEEAFE]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#7865F5] text-lg">attach_file</span>
+<span class="font-extrabold text-sm text-[#17152E]">Attach Project Evidence</span>
+</div>
+<button class="p-1 rounded-lg text-[#6E6B87] hover:text-[#17152E] hover:bg-white transition-all" onclick="closeEvidenceModal()" type="button">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<form class="p-5 flex flex-col gap-4" onsubmit="handleEvidenceSubmit(event)">
+<div>
+<label class="block text-xs font-bold text-[#17152E] mb-1">Target Task / Milestone</label>
+<input class="w-full rounded-xl border border-[#EEEAFE] text-xs p-2.5 bg-[#FAF9F6] text-[#17152E] font-medium" id="evidenceTaskInput" readonly="" type="text" value="Task 2.1: Playwright Test Automation">
+</div>
+<div>
+<label class="block text-xs font-bold text-[#17152E] mb-1">GitHub Repository or Live Demo URL</label>
+<input class="w-full rounded-xl border border-[#EEEAFE] text-xs p-2.5 focus:border-[#7865F5] focus:ring-1 focus:ring-[#7865F5]" id="evidenceUrlInput" placeholder="https://github.com/aarav-cs/playwright-test-suite" required="" type="url">
+</div>
+<div>
+<label class="block text-xs font-bold text-[#17152E] mb-1">Commit Hash / PR ID (Optional)</label>
+<input class="w-full rounded-xl border border-[#EEEAFE] text-xs p-2.5 focus:border-[#7865F5] focus:ring-1 focus:ring-[#7865F5] font-mono text-[11px]" placeholder="e.g. 7f4a9b2c or PR #12" type="text">
+</div>
+<div>
+<label class="block text-xs font-bold text-[#17152E] mb-1">Brief Description of Deliverable</label>
+<textarea class="w-full rounded-xl border border-[#EEEAFE] text-xs p-2.5 focus:border-[#7865F5] focus:ring-1 focus:ring-[#7865F5]" placeholder="Implemented test suite with POM pattern, video recording, and CI trigger on PR." rows="2"></textarea>
+</div>
+<div class="p-3 rounded-xl bg-[#EEEAFE]/50 border border-[#EEEAFE] text-[11px] text-[#4E4B66] flex items-start gap-2">
+<span class="material-symbols-outlined text-[#7865F5] text-base flex-shrink-0">info</span>
+<span>Evidence is reviewed by campus mentors before formal verification and placement index calculation.</span>
+</div>
+<div class="flex items-center justify-end gap-2 pt-2">
+<button class="px-4 py-2 rounded-xl bg-[#F4F3F8] text-[#4E4B66] hover:bg-[#EEEAFE] text-xs font-bold transition-all" onclick="closeEvidenceModal()" type="button">
+          Cancel
+        </button>
+<button class="px-4 py-2 rounded-xl bg-[#7865F5] hover:bg-[#6350E6] text-white text-xs font-bold transition-all shadow-sm" type="submit">
+          Submit Evidence
+        </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Modal: Share with Mentor Confirmation -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-[#17152E]/60 backdrop-blur-sm hidden" id="shareModal">
+<div class="w-full max-w-sm mx-4 bg-white rounded-2xl shadow-2xl p-5 border border-[#EEEAFE] text-center">
+<div class="w-12 h-12 rounded-full bg-[#EEEAFE] text-[#7865F5] flex items-center justify-center mx-auto mb-3">
+<span class="material-symbols-outlined text-2xl">send</span>
+</div>
+<h3 class="font-extrabold text-base text-[#17152E]">Roadmap Shared</h3>
+<p class="text-xs text-[#4E4B66] mt-1.5 mb-4 leading-relaxed">
+      A snapshot link of your QA Automation Engineer roadmap was sent to Dr. Priya Sharma and copied to your clipboard.
+    </p>
+<button class="w-full py-2.5 rounded-xl bg-[#7865F5] text-white font-bold text-xs hover:bg-[#6350E6] transition-all" onclick="closeShareModal()" type="button">
+      Done
+    </button>
+</div>
+</div>
+<!-- Academic Platform Footer -->
+<footer class="w-full bg-white border-t border-[#EEEAFE] py-4 mt-auto">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#6E6B87]">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#7865F5]"></span>
+<span>© 2025 SkillBridge AI · Apex Institute of Technology Partnership</span>
+</div>
+<div class="flex items-center gap-5 font-semibold">
+<a class="hover:text-[#17152E] transition-colors" href="#">Academic Integrity Policy</a>
+<a class="hover:text-[#17152E] transition-colors" href="#">Campus Placement Office</a>
+<a class="hover:text-[#17152E] transition-colors" href="#">Privacy &amp; Data Ethics</a>
+</div>
+</div>
+</footer>
+<!-- Interactive Scripts -->
+<script>
+  // State for total tasks (5 tasks: 1.1, 2.1, 2.2, 2.3, 3.1)
+  const taskState = {
+    1: true,   // 1.1 Completed initially
+    2: false,  // 2.1 Active
+    3: false,  // 2.2 Upcoming
+    4: false,  // 2.3 Upcoming
+    5: false   // 3.1 Capstone Upcoming
+  };
+
+  // View Switcher: Roadmap vs Resources
+  function switchView(viewName, targetElementId) {
+    const roadmapView = document.getElementById('view-roadmap');
+    const resourcesView = document.getElementById('view-resources');
+    const btnRoadmap = document.getElementById('toggleBtnRoadmap');
+    const btnResources = document.getElementById('toggleBtnResources');
+
+    if (viewName === 'resources') {
+      roadmapView.classList.add('hidden');
+      resourcesView.classList.remove('hidden');
+      resourcesView.classList.add('flex');
+
+      btnResources.className = 'inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#7865F5] text-white shadow-sm font-semibold text-xs sm:text-sm transition-all';
+      btnResources.setAttribute('aria-selected', 'true');
+      btnRoadmap.className = 'inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-[#4E4B66] hover:text-[#7865F5] hover:bg-[#EEEAFE] font-semibold text-xs sm:text-sm transition-all';
+      btnRoadmap.setAttribute('aria-selected', 'false');
+
+      if (targetElementId) {
+        setTimeout(() => {
+          const el = document.getElementById(targetElementId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.classList.add('ring-2', 'ring-[#7865F5]');
+            setTimeout(() => el.classList.remove('ring-2', 'ring-[#7865F5]'), 2000);
+          }
+        }, 80);
+      }
+    } else {
+      resourcesView.classList.add('hidden');
+      resourcesView.classList.remove('flex');
+      roadmapView.classList.remove('hidden');
+
+      btnRoadmap.className = 'inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[#7865F5] text-white shadow-sm font-semibold text-xs sm:text-sm transition-all';
+      btnRoadmap.setAttribute('aria-selected', 'true');
+      btnResources.className = 'inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-[#4E4B66] hover:text-[#7865F5] hover:bg-[#EEEAFE] font-semibold text-xs sm:text-sm transition-all';
+      btnResources.setAttribute('aria-selected', 'false');
+    }
+  }
+
+  // Filter Pills for Resource View
+  function filterResources(tag, btn) {
+    const buttons = document.querySelectorAll('.resource-filter-btn');
+    buttons.forEach(b => {
+      b.className = 'resource-filter-btn px-3.5 py-1.5 rounded-xl bg-[#FAF9F6] border border-[#EEEAFE] text-[#4E4B66] hover:text-[#7865F5] hover:bg-white text-xs font-semibold transition-all';
+    });
+    btn.className = 'resource-filter-btn px-3.5 py-1.5 rounded-xl bg-[#7865F5] text-white text-xs font-bold transition-all shadow-sm';
+
+    const cards = document.querySelectorAll('.resource-card');
+    cards.forEach(card => {
+      const tags = card.getAttribute('data-tags') || '';
+      if (tag === 'all') {
+        card.style.display = 'flex';
+      } else if (tag === 'free' && tags.includes('free')) {
+        card.style.display = 'flex';
+      } else if (tag === 'cert' && tags.includes('cert')) {
+        card.style.display = 'flex';
+      } else if (tag === 'video' && tags.includes('video')) {
+        card.style.display = 'flex';
+      } else if (tag === 'practice' && tags.includes('practice')) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function updateRoadmapProgress() {
+    let completedCount = 0;
+    for (let key in taskState) {
+      if (taskState[key]) completedCount++;
+    }
+
+    const totalTasks = 5;
+    const percentage = Math.round((completedCount / totalTasks) * 100);
+    const effortRemaining = Math.max(0, 22 - (completedCount * 4));
+
+    // Update progress bar & label
+    const bar = document.getElementById('overallProgressBar');
+    const label = document.getElementById('percentageLabel');
+    const badge = document.getElementById('completedTaskBadge');
+    const taskCountText = document.getElementById('taskCountText');
+    const effortText = document.getElementById('effortRemainingText');
+    const timelineFill = document.getElementById('timelineLineProgress');
+    const visibilityPill = document.getElementById('visibilityIndexPill');
+
+    if (bar) bar.style.width = percentage + '%';
+    if (label) label.textContent = percentage + '% Completed';
+    if (badge) badge.textContent = completedCount;
+    if (taskCountText) taskCountText.textContent = `${completedCount} of ${totalTasks} Tasks Completed`;
+    if (effortText) effortText.textContent = `~${effortRemaining} hours estimated effort remaining`;
+    if (timelineFill) timelineFill.style.height = (percentage > 20 ? (percentage * 0.9) : 25) + '%';
+
+    // Recruiter visibility formula
+    const visibilityScore = Math.min(100, 70 + (completedCount * 6));
+    if (visibilityPill) visibilityPill.textContent = `Index: ${visibilityScore} / 100`;
+
+    // Update Skill bars based on active states
+    const pwVal = document.getElementById('skillPlaywrightVal');
+    const pwBar = document.getElementById('skillPlaywrightBar');
+    const apiVal = document.getElementById('skillApiVal');
+    const apiBar = document.getElementById('skillApiBar');
+    const cicdVal = document.getElementById('skillCicdVal');
+    const cicdBar = document.getElementById('skillCicdBar');
+    const readinessVal = document.getElementById('currentReadinessVal');
+
+    if (taskState[2]) {
+      if (pwVal) pwVal.textContent = '85%';
+      if (pwBar) pwBar.style.width = '85%';
+    } else {
+      if (pwVal) pwVal.textContent = '45%';
+      if (pwBar) pwBar.style.width = '45%';
+    }
+
+    if (taskState[3]) {
+      if (apiVal) apiVal.textContent = '90%';
+      if (apiBar) apiBar.style.width = '90%';
+    } else {
+      if (apiVal) apiVal.textContent = '35%';
+      if (apiBar) apiBar.style.width = '35%';
+    }
+
+    if (taskState[4]) {
+      if (cicdVal) cicdVal.textContent = '80%';
+      if (cicdBar) cicdBar.style.width = '80%';
+    } else {
+      if (cicdVal) cicdVal.textContent = '0%';
+      if (cicdBar) cicdBar.style.width = '0%';
+    }
+
+    const currentReadiness = 40 + (completedCount * 10);
+    if (readinessVal) readinessVal.textContent = `Current: ${currentReadiness}%`;
+  }
+
+  function toggleTaskCompletion(taskId, element) {
+    if (element.tagName === 'INPUT') {
+      taskState[taskId] = element.checked;
+    } else {
+      // Button click for task 2
+      taskState[taskId] = !taskState[taskId];
+      const btnText = document.getElementById('task2BtnText');
+      const btn = document.getElementById('task2Btn');
+      if (taskState[taskId]) {
+        if (btnText) btnText.textContent = 'Completed ✓';
+        if (btn) btn.classList.replace('bg-[#7865F5]', 'bg-[#546500]');
+      } else {
+        if (btnText) btnText.textContent = 'Mark as Complete';
+        if (btn) btn.classList.replace('bg-[#546500]', 'bg-[#7865F5]');
+      }
+    }
+    updateRoadmapProgress();
+  }
+
+  function toggleAccordion(contentId, btn) {
+    const el = document.getElementById(contentId);
+    if (!el) return;
+    const isHidden = el.classList.contains('hidden');
+    const icon = btn.querySelector('.material-symbols-outlined');
+    if (isHidden) {
+      el.classList.remove('hidden');
+      if (icon) icon.style.transform = 'rotate(180deg)';
+    } else {
+      el.classList.add('hidden');
+      if (icon) icon.style.transform = 'rotate(0deg)';
+    }
+  }
+
+  // Modals
+  function openSandboxModal() {
+    const m = document.getElementById('sandboxModal');
+    if (m) m.classList.remove('hidden');
+  }
+
+  function closeSandboxModal() {
+    const m = document.getElementById('sandboxModal');
+    if (m) m.classList.add('hidden');
+  }
+
+  function runSandboxTests() {
+    const btn = document.getElementById('executeRunBtn');
+    const s1 = document.getElementById('sandboxSuccess1');
+    const s2 = document.getElementById('sandboxSuccess2');
+    if (btn) {
+      btn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">sync</span><span>Running Suites...</span>';
+      setTimeout(() => {
+        if (s1) s1.classList.remove('hidden');
+        if (s2) s2.classList.remove('hidden');
+        btn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span><span>Passed</span>';
+      }, 700);
+    }
+  }
+
+  function openEvidenceModal(taskTitle) {
+    const m = document.getElementById('evidenceModal');
+    const input = document.getElementById('evidenceTaskInput');
+    if (input && taskTitle) input.value = taskTitle;
+    if (m) m.classList.remove('hidden');
+  }
+
+  function closeEvidenceModal() {
+    const m = document.getElementById('evidenceModal');
+    if (m) m.classList.add('hidden');
+  }
+
+  function handleEvidenceSubmit(e) {
+    e.preventDefault();
+    closeEvidenceModal();
+    alert('Project evidence submitted successfully! Placement officers and your advisor have been notified for formal review.');
+  }
+
+  function openShareModal() {
+    const m = document.getElementById('shareModal');
+    if (m) m.classList.remove('hidden');
+  }
+
+  function closeShareModal() {
+    const m = document.getElementById('shareModal');
+    if (m) m.classList.add('hidden');
+  }
+
+  // Initial call
+  document.addEventListener('DOMContentLoaded', () => {
+    updateRoadmapProgress();
+  });
+</script>
+</body></html>

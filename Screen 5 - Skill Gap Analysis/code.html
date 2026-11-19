@@ -1,0 +1,942 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
+<title>SkillBridge AI — Career Readiness Platform</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#715eee",
+            "on-secondary-fixed-variant": "#3f4c00",
+            "outline-variant": "#c9c4d7",
+            "inverse-primary": "#c7bfff",
+            "on-error-container": "#93000a",
+            "on-surface": "#1a1832",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed": "#e5deff",
+            "surface-dim": "#dbd6f8",
+            "surface": "#fcf8ff",
+            "tertiary-container": "#757384",
+            "tertiary": "#5c5a6b",
+            "surface-container-low": "#f6f1ff",
+            "surface-variant": "#e4dfff",
+            "surface-container": "#f0ebff",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed-variant": "#464555",
+            "secondary": "#546500",
+            "on-primary-fixed-variant": "#4226bd",
+            "background": "#fcf8ff",
+            "surface-bright": "#fcf8ff",
+            "outline": "#787586",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#181e00",
+            "surface-container-high": "#eae5ff",
+            "on-tertiary-fixed": "#1b1a28",
+            "on-secondary-container": "#596c00",
+            "tertiary-fixed": "#e4e0f4",
+            "on-secondary": "#ffffff",
+            "surface-tint": "#5a45d6",
+            "inverse-on-surface": "#f3eeff",
+            "primary": "#5842d3",
+            "secondary-container": "#d3ef66",
+            "on-surface-variant": "#474554",
+            "inverse-surface": "#302d48",
+            "on-background": "#1a1832",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#180065",
+            "on-tertiary-container": "#fffbff",
+            "secondary-fixed-dim": "#b7d24d",
+            "on-error": "#ffffff",
+            "on-primary-container": "#fffbff",
+            "primary-fixed-dim": "#c7bfff",
+            "secondary-fixed": "#d3ef66",
+            "tertiary-fixed-dim": "#c8c4d7",
+            "surface-container-highest": "#e4dfff"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          spacing: {
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "margin": "2rem",
+            "margin-sm": "1rem"
+          },
+          fontFamily: {
+            "display-hero-mobile": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "body-md": ["Manrope"],
+            "headline-xl": ["Manrope"],
+            "body-lg": ["Manrope"],
+            "label-numeric": ["JetBrains Mono"],
+            "display-hero": ["Manrope"],
+            "label-badge": ["Manrope"],
+            "body-sm": ["Manrope"]
+          },
+          fontSize: {
+            "display-hero-mobile": ["32px", { lineHeight: "38px", letterSpacing: "-0.02em", fontWeight: "800" }],
+            "headline-md": ["18px", { lineHeight: "24px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "700" }],
+            "body-md": ["14px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "400" }],
+            "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "body-lg": ["16px", { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "400" }],
+            "label-numeric": ["14px", { lineHeight: "20px", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "display-hero": ["48px", { lineHeight: "54px", letterSpacing: "-0.03em", fontWeight: "800" }],
+            "label-badge": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "700" }],
+            "body-sm": ["12px", { lineHeight: "18px", letterSpacing: "0em", fontWeight: "500" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #FAF9F6;
+        color: #1a1832;
+        font-family: 'Manrope', sans-serif;
+      }
+      ::-webkit-scrollbar { display: none; }
+    }
+  </style>
+</head>
+<body class="bg-[#FAF9F6] text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col justify-between">
+<!-- Persistent Top Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-surface-dim/30 shadow-[0_1px_10px_rgba(26,24,50,0.03)]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="h-16 flex items-center justify-between gap-4">
+<!-- Left: Logo mark icon only in electric violet container + small EDU pill -->
+<div class="flex items-center gap-2 flex-shrink-0">
+<a aria-label="SkillBridge AI" class="flex items-center gap-2 group" href="#">
+<div class="w-9 h-9 rounded-xl bg-[#7865F5] flex items-center justify-center text-white shadow-sm shadow-[#7865F5]/30 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-xl">hub</span>
+</div>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-[#EEEAFE] text-[#5842d3] font-label-badge text-[11px] font-bold uppercase tracking-wider">
+            EDU
+          </span>
+</a>
+</div>
+<!-- Center: 6 Links with Skill Gap Analysis active pill -->
+<nav class="hidden md:flex items-center gap-1 font-body-md text-body-md text-on-surface-variant font-medium">
+<a class="px-3 py-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors" href="#">Home</a>
+<a class="px-3 py-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors" href="#">Upload Resume</a>
+<a class="px-3 py-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors" href="#">My Skills</a>
+<a class="px-3 py-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors" href="#">Explore Careers</a>
+<a aria-current="page" class="px-3.5 py-1.5 rounded-lg bg-[#7865F5] text-white font-semibold shadow-xs transition-all" href="#">Skill Gap Analysis</a>
+<a class="px-3 py-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors" href="#">My Roadmap</a>
+</nav>
+<!-- Right: Single circular student avatar AS with online green dot & hover popover -->
+<div class="relative group flex items-center flex-shrink-0">
+<button aria-label="Student profile" class="relative w-10 h-10 rounded-full bg-primary-fixed border border-[#7865F5]/30 flex items-center justify-center font-headline-md text-sm font-bold text-primary hover:ring-2 hover:ring-[#7865F5]/30 transition-all focus:outline-none" type="button">
+<span class="">AS</span>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#546500] border-2 border-white rounded-full"></span>
+</button>
+<!-- Compact Popover Card on Hover/Focus -->
+<div class="absolute right-0 top-full mt-2 w-64 p-3.5 bg-surface-container-lowest rounded-xl shadow-lg border border-surface-dim/40 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50 pointer-events-none group-hover:pointer-events-auto">
+<div class="flex items-center gap-3 mb-2 pb-2 border-b border-surface-container">
+<div class="w-9 h-9 rounded-full bg-[#EEEAFE] flex items-center justify-center font-bold text-sm text-[#5842d3]">AS</div>
+<div class="min-w-0">
+<p class="font-headline-md text-sm font-semibold text-on-surface truncate">Aarav Sharma</p>
+<p class="font-body-sm text-[11px] text-tertiary truncate">B.Tech CS &amp; Eng. ('26)</p>
+</div>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary">school</span>
+<span class="">Apex Institute of Technology</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Slot -->
+<main class="w-full pt-20 pb-space-xl flex-grow"><div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<!-- Page Introduction & Target Role Selector Bar -->
+<div class="mb-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-surface-dim/40">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight mb-1.5">
+          Your gap is your next opportunity.
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          See how your current skills compare with your target career, and discover what to focus on next.
+        </p>
+</div>
+<div class="flex items-center gap-2 flex-wrap">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface text-body-sm font-medium border border-primary/10 shadow-xs">
+<span class="w-2 h-2 rounded-full bg-[#546500]"></span>
+<span class="text-tertiary">Target Role:</span>
+<span class="font-semibold text-primary">QA Automation Engineer</span>
+</div>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-surface-dim/50 text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all text-body-sm font-medium shadow-xs" type="button">
+<span class="material-symbols-outlined text-base">swap_horiz</span>
+<span class="">Change Target Role</span>
+</button>
+<a class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-tertiary hover:text-on-surface text-body-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-base">arrow_back</span>
+<span class="">Return to Explore Careers</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Career-Fit Overview Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 lg:p-8 shadow-sm border border-surface-dim/40 mb-10 relative overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Left: Radial Progress Ring & Explicit Vector Match Disclaimer -->
+<div class="lg:col-span-4 flex flex-col items-center text-center p-4 rounded-xl bg-surface-container-low/70 border border-surface-dim/30">
+<div class="relative my-2 flex items-center justify-center">
+<svg class="w-40 h-40 -rotate-90 transform" viewBox="0 0 120 120">
+<circle class="text-surface-container-high" cx="60" cy="60" fill="transparent" r="50" stroke="currentColor" stroke-width="10"></circle>
+<circle class="text-[#7865F5]" cx="60" cy="60" fill="transparent" r="50" stroke="currentColor" stroke-dasharray="314.159" stroke-dashoffset="87.96" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-hero text-4xl font-extrabold text-on-surface tracking-tight leading-none">72%</span>
+<span class="font-label-badge text-[11px] font-bold uppercase tracking-wider text-primary mt-1">Profile Match</span>
+</div>
+</div>
+<p class="font-body-sm text-[12px] text-tertiary max-w-[240px] leading-snug mt-1">
+          Vector Match against Target Role rubric, not a hiring guarantee.
+        </p>
+</div>
+<!-- Right: Alignment Statistics, Explanation & Timeline -->
+<div class="lg:col-span-8 flex flex-col justify-between space-y-5">
+<div>
+<div class="flex flex-wrap items-center gap-2 mb-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-fixed font-headline-md text-xs font-bold uppercase tracking-wide">
+<span class="material-symbols-outlined text-[15px]">insights</span>
+              Alignment Overview
+            </span>
+<span class="font-body-sm text-xs text-tertiary">· Refined from CS Coursework + GitHub repos</span>
+</div>
+<h2 class="font-headline-lg text-2xl font-bold text-on-surface mb-2">
+            Solid engineering base with 3 target framework gaps to bridge.
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Calculated by comparing your demonstrated coursework, verified GitHub projects, and resume evidence against standard industry competency benchmarks for entry-level QA automation roles.
+          </p>
+</div>
+<!-- Key Metric Badges -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-dim/40 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+<div>
+<p class="font-headline-md text-base font-bold text-on-surface">4 Skills</p>
+<p class="font-body-sm text-[11px] text-tertiary">Demonstrated / Evidence</p>
+</div>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-dim/40 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-[#EEEAFE] text-[#7865F5] flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-xl">target</span>
+</div>
+<div>
+<p class="font-headline-md text-base font-bold text-on-surface">3 Priority Gaps</p>
+<p class="font-body-sm text-[11px] text-tertiary">High-impact to close</p>
+</div>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-dim/40 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-xl">schedule</span>
+</div>
+<div>
+<p class="font-headline-md text-base font-bold text-on-surface">~4–6 Weeks</p>
+<p class="font-body-sm text-[11px] text-tertiary">Focused bridge sprint</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Current Skills vs. Required Skills (Main Analytical Feature) -->
+<section class="mb-12" id="skillsComparisonSection">
+<!-- Section Header with Interactive Filters -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="font-label-badge text-xs uppercase tracking-wider text-primary font-bold">Interactive Feature</span>
+</div>
+<h2 class="font-headline-lg text-2xl font-bold text-on-surface">Current Skills vs. Required Skills</h2>
+<p class="font-body-md text-sm text-on-surface-variant mt-0.5">
+        See what your profile demonstrates today and what your target role expects.
+      </p>
+</div>
+<!-- Filter & Legend Bar -->
+<div class="flex flex-col sm:flex-row sm:items-center gap-3">
+<!-- Legend -->
+<div class="flex items-center gap-3 text-xs font-body-sm bg-surface-container-low px-3 py-1.5 rounded-xl border border-surface-dim/40">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#7865F5]"></span>
+<span class="text-tertiary">Your Evidence</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-[#546500]"></span>
+<span class="text-tertiary">Role Expectation</span>
+</div>
+</div>
+<!-- Filter Buttons -->
+<div class="inline-flex p-1 rounded-xl bg-surface-container-high border border-surface-dim/30" id="skillFilterGroup">
+<button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-headline-md font-bold transition-all bg-[#7865F5] text-white shadow-xs" data-filter="all" type="button">
+          All Skills (5)
+        </button>
+<button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-headline-md font-medium text-tertiary hover:text-on-surface transition-all" data-filter="strengths" type="button">
+          Strengths (1)
+        </button>
+<button class="filter-btn px-3 py-1.5 rounded-lg text-xs font-headline-md font-medium text-tertiary hover:text-on-surface transition-all" data-filter="gaps" type="button">
+          Gaps (4)
+        </button>
+</div>
+</div>
+</div>
+<!-- 2-Column Comparison Layout: Cards List (Left) + Connected Deep Dive Inspector (Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left Column: Interactive Skill Comparison Cards -->
+<div class="lg:col-span-7 space-y-3" id="skillsCardList">
+<!-- Card 1: Python (Strength) -->
+<div class="skill-card cursor-pointer p-4 rounded-2xl bg-surface-container-lowest border border-surface-dim/40 hover:border-primary/50 transition-all shadow-xs group" data-category="strengths" data-skill-id="python">
+<div class="flex items-start justify-between gap-3 mb-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-lg">terminal</span>
+</div>
+<div>
+<h3 class="font-headline-md text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Python Programming Fundamentals</h3>
+<p class="font-body-sm text-[11px] text-tertiary">Verified CS210 coursework &amp; 12 GitHub repos</p>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-emerald-100 text-emerald-800">
+              Strong Alignment
+            </span>
+<p class="font-label-numeric text-[11px] font-bold text-emerald-700 mt-0.5">+17% Surplus</p>
+</div>
+</div>
+<!-- Paired Progress Bars -->
+<div class="space-y-1.5 pt-1 border-t border-surface-dim/20">
+<div>
+<div class="flex items-center justify-between text-[11px] font-body-sm mb-1">
+<span class="text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#7865F5]"></span> Your Evidence</span>
+<span class="font-label-numeric font-bold text-primary">92%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-[#7865F5] rounded-full transition-all duration-300" style="width: 92%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-[11px] font-body-sm mb-1">
+<span class="text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#546500]"></span> Role Expectation</span>
+<span class="font-label-numeric font-semibold text-secondary">75%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-[#546500] rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Playwright (Gap - Active Default) -->
+<div class="skill-card cursor-pointer p-4 rounded-2xl bg-surface-container-lowest transition-all group is-active border-2 border-[#7865F5] shadow-md shadow-[#7865F5]/10" data-category="gaps" data-skill-id="playwright">
+<div class="flex items-start justify-between gap-3 mb-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-[#EEEAFE] text-[#7865F5] flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-lg">smart_toy</span>
+</div>
+<div>
+<h3 class="font-headline-md text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Selenium &amp; Playwright Automation</h3>
+<p class="font-body-sm text-[11px] text-tertiary">Developing (Lab 4 unit tests)</p>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-amber-100 text-amber-800">
+              Priority Gap
+            </span>
+<p class="font-label-numeric text-[11px] font-bold text-amber-700 mt-0.5">-52% Delta</p>
+</div>
+</div>
+<!-- Paired Progress Bars -->
+<div class="space-y-1.5 pt-1 border-t border-surface-dim/20">
+<div>
+<div class="flex items-center justify-between text-[11px] font-body-sm mb-1">
+<span class="text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#7865F5]"></span> Your Evidence</span>
+<span class="font-label-numeric font-bold text-primary">28%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-[#7865F5] rounded-full transition-all duration-300" style="width: 28%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-[11px] font-body-sm mb-1">
+<span class="text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#546500]"></span> Role Expectation</span>
+<span class="font-label-numeric font-semibold text-secondary">80%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-[#546500] rounded-full" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: API Testing & Postman (Gap) -->
+<div class="skill-card cursor-pointer p-4 rounded-2xl bg-surface-container-lowest border border-surface-dim/40 hover:border-primary/50 transition-all shadow-xs group" data-category="gaps" data-skill-id="api_testing">
+<div class="flex items-start justify-between gap-3 mb-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-[#EEEAFE] text-[#7865F5] flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-lg">api</span>
+</div>
+<div>
+<h3 class="font-headline-md text-sm font-bold text-on-surface group-hover:text-primary transition-colors">API Testing &amp; Postman</h3>
+<p class="font-body-sm text-[11px] text-tertiary">Developing (CS304 capstone manual tests)</p>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-[#EEEAFE] text-[#5842d3]">
+              Developing
+            </span>
+<p class="font-label-numeric text-[11px] font-bold text-[#5842d3] mt-0.5">-35% Delta</p>
+</div>
+</div>
+<!-- Paired Progress Bars -->
+<div class="space-y-1.5 pt-1 border-t border-surface-dim/20">
+<div>
+<div class="flex items-center justify-between text-[11px] font-body-sm mb-1">
+<span class="text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#7865F5]"></span> Your Evidence</span>
+<span class="font-label-numeric font-bold text-primary">35%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-[#7865F5] rounded-full transition-all duration-300" style="width: 35%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-[11px] font-body-sm mb-1">
+<span class="text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#546500]"></span> Role Expectation</span>
+<span class="font-label-numeric font-semibold text-secondary">70%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-[#546500] rounded-full" style="width: 70%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4: PyTest Frameworks (Gap) -->
+<div class="skill-card cursor-pointer p-4 rounded-2xl bg-surface-container-lowest border border-surface-dim/40 hover:border-primary/50 transition-all shadow-xs group" data-category="gaps" data-skill-id="frameworks">
+<div class="flex items-start justify-between gap-3 mb-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-lg">construction</span>
+</div>
+<div>
+<h3 class="font-headline-md text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Test Automation Frameworks (PyTest)</h3>
+<p class="font-body-sm text-[11px] text-tertiary">Priority Gap (missing repo evidence)</p>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-amber-100 text-amber-800">
+              Priority Gap
+            </span>
+<p class="font-label-numeric text-[11px] font-bold text-amber-700 mt-0.5">-60% Delta</p>
+</div>
+</div>
+<!-- Paired Progress Bars -->
+<div class="space-y-1.5 pt-1 border-t border-surface-dim/20">
+<div>
+<div class="flex items-center justify-between text-[11px] font-body-sm mb-1">
+<span class="text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#7865F5]"></span> Your Evidence</span>
+<span class="font-label-numeric font-bold text-primary">15%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-[#7865F5] rounded-full transition-all duration-300" style="width: 15%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-[11px] font-body-sm mb-1">
+<span class="text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#546500]"></span> Role Expectation</span>
+<span class="font-label-numeric font-semibold text-secondary">75%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-[#546500] rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 5: CI/CD & GitHub Actions (Gap) -->
+<div class="skill-card cursor-pointer p-4 rounded-2xl bg-surface-container-lowest border border-surface-dim/40 hover:border-primary/50 transition-all shadow-xs group" data-category="gaps" data-skill-id="cicd">
+<div class="flex items-start justify-between gap-3 mb-2.5">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-lg">sync_alt</span>
+</div>
+<div>
+<h3 class="font-headline-md text-sm font-bold text-on-surface group-hover:text-primary transition-colors">CI/CD &amp; GitHub Actions</h3>
+<p class="font-body-sm text-[11px] text-tertiary">No workflow telemetry in profile</p>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide bg-slate-100 text-slate-700">
+              Evidence Needed
+            </span>
+<p class="font-label-numeric text-[11px] font-bold text-slate-500 mt-0.5">Missing</p>
+</div>
+</div>
+<!-- Paired Progress Bars -->
+<div class="space-y-1.5 pt-1 border-t border-surface-dim/20">
+<div>
+<div class="flex items-center justify-between text-[11px] font-body-sm mb-1">
+<span class="text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#7865F5]"></span> Your Evidence</span>
+<span class="font-label-numeric font-bold text-slate-500">0%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-slate-400 rounded-full transition-all duration-300" style="width: 4%;"></div>
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between text-[11px] font-body-sm mb-1">
+<span class="text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#546500]"></span> Role Expectation</span>
+<span class="font-label-numeric font-semibold text-secondary">65%</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-[#546500] rounded-full" style="width: 65%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Connected Skill Detail Inspector (Sticky Card) -->
+<div class="lg:col-span-5">
+<div class="sticky top-24 p-6 rounded-2xl bg-surface-container-lowest border border-surface-dim/40 shadow-sm transition-all" id="skillDetailInspector">
+<!-- Dynamic Inspector Header -->
+<div class="flex items-start justify-between gap-3 mb-4 pb-4 border-b border-surface-container">
+<div>
+<span class="font-label-badge text-[10px] uppercase font-bold text-tertiary tracking-wider block mb-1" id="inspectorCategory">Web &amp; UI Automation</span>
+<h3 class="font-headline-lg text-lg font-bold text-on-surface leading-snug" id="inspectorTitle">Selenium &amp; Playwright Automation</h3>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold font-label-badge uppercase tracking-wide flex-shrink-0 bg-amber-100 text-amber-800" id="inspectorBadge">Priority Gap</span>
+</div>
+<!-- Comparison Context Modules -->
+<div class="space-y-4 mb-5">
+<!-- Role Expectation Box -->
+<div class="p-3.5 rounded-xl bg-surface-container-low/70 border border-surface-dim/30">
+<div class="flex items-center gap-1.5 text-xs font-headline-md font-bold text-secondary mb-1">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+<span class="">What QA Automation Roles Expect</span>
+</div>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed" id="inspectorRoleExpectation">Candidate writes robust UI scripts using modern locators, handles dynamic waits, captures traces/artifacts, and models components using Page Object Models.</p>
+</div>
+<!-- Available Evidence Box -->
+<div class="p-3.5 rounded-xl bg-surface-container-low/70 border border-surface-dim/30">
+<div class="flex items-center gap-1.5 text-xs font-headline-md font-bold text-primary mb-1">
+<span class="material-symbols-outlined text-[15px]">fingerprint</span>
+<span class="">Available Profile Evidence</span>
+</div>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed" id="inspectorEvidence">Found introductory unit script in Lab 4 repository. Basic Selenium imports verified, but no multi-page coverage, headless runners, or artifact pipelines identified.</p>
+</div>
+<!-- Gap Takeaway Box -->
+<div class="p-3.5 rounded-xl bg-[#EEEAFE] border border-primary/20">
+<div class="flex items-center gap-1.5 text-xs font-headline-md font-bold text-[#5842d3] mb-1">
+<span class="material-symbols-outlined text-[15px]">insights</span>
+<span class="">Gap Analysis Takeaway</span>
+</div>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed" id="inspectorTakeaway">Closing this delta (+52%) represents the single highest score booster for your overall profile match.</p>
+</div>
+</div>
+<!-- Recommended Action Card -->
+<div class="p-3.5 rounded-xl bg-surface-container-high border border-primary/10 mb-5">
+<div class="flex items-center justify-between text-xs font-semibold text-tertiary mb-1.5">
+<span class="text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">task_alt</span> Recommended Next Action
+            </span>
+<span class="font-label-numeric font-medium text-tertiary" id="inspectorEffort">~8h · 1.5 wks</span>
+</div>
+<p class="font-body-sm text-xs text-on-surface mb-3" id="inspectorActionText">Build an automated end-to-end test suite using Playwright Python for an e-commerce checkout flow.</p>
+<button class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-primary text-white font-headline-md text-xs font-bold hover:bg-primary-container transition-all active:scale-[0.98] shadow-xs" type="button">
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Add to My Roadmap</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Subtle Footnote & Legend -->
+<p class="font-body-sm text-xs text-tertiary mt-4 text-center">
+    Illustrative demo alignment scores. Missing profile evidence reflects unindexed coursework or repos, not a confirmed lack of student ability.
+  </p>
+</section>
+<!-- Top Priorities Section -->
+<div class="mb-12">
+<div class="mb-6">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-badge text-xs uppercase tracking-wider text-secondary font-bold">High-Impact Target Interventions</span>
+</div>
+<h2 class="font-headline-lg text-2xl font-bold text-on-surface">Your top priorities</h2>
+<p class="font-body-sm text-body-sm text-tertiary">
+        Focus on these high-impact gaps to unlock 94% profile match for QA Automation Engineer.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Priority Card 1 (Most Prominent) -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border-2 border-primary/30 hover:shadow-md transition-all flex flex-col justify-between relative">
+<div class="absolute -top-3 left-6">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-badge text-[11px] font-bold uppercase tracking-wider shadow-xs">
+            Priority 01 · Immediate
+          </span>
+</div>
+<div class="pt-2">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">smart_toy</span>
+</div>
+<div>
+<h3 class="font-headline-md text-base font-bold text-on-surface leading-snug">Selenium &amp; Playwright Automation</h3>
+<span class="inline-block px-2 py-0.5 rounded bg-[#EEEAFE] text-[#5842d3] font-label-badge text-[10px] font-semibold mt-0.5">Developing</span>
+</div>
+</div>
+<!-- Why it matters -->
+<div class="p-3 rounded-xl bg-surface-container-low mb-3 border border-surface-dim/30">
+<span class="font-label-badge text-[10px] uppercase font-bold text-tertiary block mb-1">Why it matters</span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+              Over 85% of entry QA automation roles require end-to-end browser test scripts.
+            </p>
+</div>
+<!-- Current status & Recommended Action -->
+<div class="space-y-2 mb-4 text-xs font-body-sm">
+<p class="text-tertiary"><span class="font-semibold text-on-surface">Current Status:</span> Developing (Lab proof exists, needs full suite).</p>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest border border-surface-dim/40">
+<p class="font-semibold text-primary mb-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">task_alt</span> Recommended Action:
+              </p>
+<p class="text-on-surface-variant">Build an automated end-to-end test suite using Playwright Python for an e-commerce checkout flow.</p>
+</div>
+<p class="text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">timer</span>
+<span class="">Estimated Effort: ~8 hours (~1.5 weeks)</span>
+</p>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-primary text-white font-headline-md text-body-sm shadow-xs hover:bg-primary-container transition-all active:scale-[0.98]" type="button">
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Add to My Roadmap</span>
+</button>
+</div>
+</div>
+<!-- Priority Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-dim/40 hover:shadow-md transition-all flex flex-col justify-between relative">
+<div class="absolute -top-3 left-6">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-primary font-label-badge text-[11px] font-bold uppercase tracking-wider shadow-xs">
+            Priority 02 · Mid Sprint
+          </span>
+</div>
+<div class="pt-2">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">api</span>
+</div>
+<div>
+<h3 class="font-headline-md text-base font-bold text-on-surface leading-snug">API Testing &amp; Mocking</h3>
+<span class="inline-block px-2 py-0.5 rounded bg-[#EEEAFE] text-[#5842d3] font-label-badge text-[10px] font-semibold mt-0.5">Developing</span>
+</div>
+</div>
+<!-- Why it matters -->
+<div class="p-3 rounded-xl bg-surface-container-low mb-3 border border-surface-dim/30">
+<span class="font-label-badge text-[10px] uppercase font-bold text-tertiary block mb-1">Why it matters</span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+              Microservice validation requires JSON assertions, status code checks, and automated request chaining.
+            </p>
+</div>
+<!-- Current status & Recommended Action -->
+<div class="space-y-2 mb-4 text-xs font-body-sm">
+<p class="text-tertiary"><span class="font-semibold text-on-surface">Current Status:</span> Developing (Basic Postman, lacks automated runner).</p>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest border border-surface-dim/40">
+<p class="font-semibold text-primary mb-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">task_alt</span> Recommended Action:
+              </p>
+<p class="text-on-surface-variant">Practice REST contract assertions using pytest-requests on a public API.</p>
+</div>
+<p class="text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">timer</span>
+<span class="">Estimated Effort: ~5 hours (~1 week)</span>
+</p>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-surface-container-high text-primary font-headline-md text-body-sm hover:bg-primary hover:text-white transition-all active:scale-[0.98]" type="button">
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Add to My Roadmap</span>
+</button>
+</div>
+</div>
+<!-- Priority Card 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-surface-dim/40 hover:shadow-md transition-all flex flex-col justify-between relative">
+<div class="absolute -top-3 left-6">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label-badge text-[11px] font-bold uppercase tracking-wider shadow-xs">
+            Priority 03 · Final Stage
+          </span>
+</div>
+<div class="pt-2">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">sync_alt</span>
+</div>
+<div>
+<h3 class="font-headline-md text-base font-bold text-on-surface leading-snug">CI/CD Pipeline Automation</h3>
+<span class="inline-block px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-label-badge text-[10px] font-semibold mt-0.5">Missing from profile</span>
+</div>
+</div>
+<!-- Why it matters -->
+<div class="p-3 rounded-xl bg-surface-container-low mb-3 border border-surface-dim/30">
+<span class="font-label-badge text-[10px] uppercase font-bold text-tertiary block mb-1">Why it matters</span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+              Modern QA runs automated regressions automatically inside GitHub Actions workflows.
+            </p>
+</div>
+<!-- Current status & Recommended Action -->
+<div class="space-y-2 mb-4 text-xs font-body-sm">
+<p class="text-tertiary"><span class="font-semibold text-on-surface">Current Status:</span> Missing from profile.</p>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest border border-surface-dim/40">
+<p class="font-semibold text-primary mb-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">task_alt</span> Recommended Action:
+              </p>
+<p class="text-on-surface-variant">Configure a GitHub Actions YAML workflow to run automated pytest jobs on every commit.</p>
+</div>
+<p class="text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">timer</span>
+<span class="">Estimated Effort: ~4 hours (~1 week)</span>
+</p>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-surface-container-high text-primary font-headline-md text-body-sm hover:bg-primary hover:text-white transition-all active:scale-[0.98]" type="button">
+<svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Add to My Roadmap</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary & Secondary CTA Section with Reassuring Footnote -->
+<div class="bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-2xl p-6 lg:p-8 shadow-lg relative overflow-hidden mb-4">
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+<div class="max-w-xl">
+<span class="inline-flex items-center gap-1 font-label-badge text-[11px] px-2.5 py-1 rounded-md bg-secondary-container text-on-secondary-fixed uppercase tracking-wider mb-2 font-bold">
+          Actionable Next Phase
+        </span>
+<h2 class="font-headline-xl text-2xl lg:text-3xl font-bold text-on-primary mb-2 leading-tight">
+          Ready to turn these insights into action?
+        </h2>
+<p class="font-body-md text-body-md text-inverse-on-surface/90">
+          SkillBridge translates these 3 priority gap interventions into weekly milestones tailored to your academic schedule.
+        </p>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-shrink-0">
+<a class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-secondary-container text-on-secondary-fixed font-headline-md text-body-md font-bold shadow-md hover:bg-secondary-fixed-dim transition-all active:scale-[0.98]" href="#" id="buildRoadmapCtaBtn">
+<span class="">Build My Roadmap</span>
+<span class="material-symbols-outlined text-xl">bolt</span>
+</a>
+<a class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-on-primary/10 text-on-primary hover:bg-on-primary/20 transition-all font-body-md text-body-md font-medium border border-white/10" href="#">
+<span class="material-symbols-outlined text-lg">explore</span>
+<span class="">Explore Other Careers</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Reassuring Footnote -->
+<p class="text-center font-body-sm text-xs text-tertiary pt-2 pb-4">
+    Evaluations are based on uploaded resume evidence and coursework rubrics. Illustrative academic prototype.
+  </p>
+</div></main>
+<!-- Academic Platform Footer -->
+<footer class="w-full bg-surface-container-lowest py-space-md mt-auto">
+<div class="max-w-[1440px] mx-auto px-margin-sm md:px-margin lg:px-space-xl flex flex-col md:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-tertiary">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="">© 2025 SkillBridge AI · Apex Institute of Technology Partnership</span>
+</div>
+<div class="flex items-center gap-space-lg font-medium">
+<a class="hover:text-on-surface transition-colors" href="#">Academic Integrity Policy</a>
+<a class="hover:text-on-surface transition-colors" href="#">Campus Placement Office</a>
+<a class="hover:text-on-surface transition-colors" href="#">Privacy &amp; Data Ethics</a>
+</div>
+</div>
+</footer>
+<script>
+  (function() {
+    const skillsData = {
+      python: {
+        title: 'Python Programming Fundamentals',
+        category: 'Language Core & OOP',
+        badge: 'Strong Alignment',
+        badgeClass: 'bg-emerald-100 text-emerald-800',
+        roleExpectation: 'Solid fluency with OOP patterns, standard library data structures, exception handling, and virtual environment packaging for test suites.',
+        evidence: 'CS210 coursework completed with Distinction. 12 GitHub repositories showcasing Python CLI utilities, data parsers, and algorithm implementations.',
+        takeaway: 'Exceeds standard entry benchmark by +17%. Python is your core foundation for writing clean, modular automation suites.',
+        effort: 'Maintained · Ongoing',
+        actionText: 'Leverage Python strengths by authoring reusable fixture modules and helper libraries in your test suites.'
+      },
+      playwright: {
+        title: 'Selenium & Playwright Automation',
+        category: 'Web & UI Automation',
+        badge: 'Priority Gap',
+        badgeClass: 'bg-amber-100 text-amber-800',
+        roleExpectation: 'Candidate writes robust UI scripts using modern locators, handles dynamic waits, captures traces/artifacts, and models components using Page Object Models.',
+        evidence: 'Found introductory unit script in Lab 4 repository. Basic Selenium imports verified, but no multi-page coverage, headless runners, or artifact pipelines identified.',
+        takeaway: 'Closing this delta (+52%) represents the single highest score booster for your overall profile match.',
+        effort: '~8h · 1.5 wks',
+        actionText: 'Build an automated end-to-end test suite using Playwright Python for an e-commerce checkout flow.'
+      },
+      api_testing: {
+        title: 'API Testing & Postman',
+        category: 'Services & Integration',
+        badge: 'Developing',
+        badgeClass: 'bg-[#EEEAFE] text-[#5842d3]',
+        roleExpectation: 'Ability to test REST/JSON endpoints, validate status codes, assert schema structures, and chain token-based requests automatically.',
+        evidence: 'Found Postman collection JSON in CS304 capstone repo. Manual assertions present, but lacks automated command-line execution (Newman/Pytest).',
+        takeaway: 'A brief 1-week sprint converting manual collections to pytest-requests scripts will bridge this 35% gap.',
+        effort: '~5h · 1 wk',
+        actionText: 'Practice REST contract assertions using pytest-requests on a public API.'
+      },
+      frameworks: {
+        title: 'Test Automation Frameworks (PyTest)',
+        category: 'Architecture & Tooling',
+        badge: 'Priority Gap',
+        badgeClass: 'bg-amber-100 text-amber-800',
+        roleExpectation: 'Structuring clean test directories, utilizing pytest fixtures, parametrized tests, parallel test execution, and HTML reporting.',
+        evidence: 'No dedicated pytest test suite or conftest.py files identified across indexed repositories.',
+        takeaway: 'Industry teams expect standard test runner conventions. Bridging this gap converts individual scripts into professional test architecture.',
+        effort: '~6h · 1 wk',
+        actionText: 'Create a reusable Pytest repository featuring modular conftest fixtures and HTML test reporting.'
+      },
+      cicd: {
+        title: 'CI/CD & GitHub Actions',
+        category: 'DevOps & Pipeline Telemetry',
+        badge: 'Evidence Needed',
+        badgeClass: 'bg-slate-100 text-slate-700',
+        roleExpectation: 'Configuring GitHub Actions YAML workflows to trigger automated test runs on pull requests and upload failure screenshots.',
+        evidence: 'Zero .github/workflows directory instances detected in connected repositories.',
+        takeaway: 'Even a minimal 25-line GitHub workflow file will verify this competency for prospective interviewers.',
+        effort: '~4h · 1 wk',
+        actionText: 'Configure a GitHub Actions YAML workflow to run automated pytest jobs on every commit.'
+      }
+    };
+
+    const filterBtns = document.querySelectorAll('#skillFilterGroup .filter-btn');
+    const cards = Array.from(document.querySelectorAll('.skill-card'));
+    let currentSelectedId = 'playwright';
+
+    function updateInspector(skillId) {
+      const data = skillsData[skillId];
+      if (!data) return;
+
+      const titleEl = document.getElementById('inspectorTitle');
+      const categoryEl = document.getElementById('inspectorCategory');
+      const badgeEl = document.getElementById('inspectorBadge');
+      const roleEl = document.getElementById('inspectorRoleExpectation');
+      const evidenceEl = document.getElementById('inspectorEvidence');
+      const takeawayEl = document.getElementById('inspectorTakeaway');
+      const effortEl = document.getElementById('inspectorEffort');
+      const actionEl = document.getElementById('inspectorActionText');
+
+      if (titleEl) titleEl.textContent = data.title;
+      if (categoryEl) categoryEl.textContent = data.category;
+      if (badgeEl) {
+        badgeEl.textContent = data.badge;
+        badgeEl.className = 'inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold font-label-badge uppercase tracking-wide flex-shrink-0 ' + data.badgeClass;
+      }
+      if (roleEl) roleEl.textContent = data.roleExpectation;
+      if (evidenceEl) evidenceEl.textContent = data.evidence;
+      if (takeawayEl) takeawayEl.textContent = data.takeaway;
+      if (effortEl) effortEl.textContent = data.effort;
+      if (actionEl) actionEl.textContent = data.actionText;
+    }
+
+    function selectCard(card) {
+      cards.forEach(c => {
+        c.classList.remove('is-active', 'border-2', 'border-[#7865F5]', 'shadow-md', 'shadow-[#7865F5]/10');
+        c.classList.add('border', 'border-surface-dim/40', 'shadow-xs');
+      });
+
+      card.classList.add('is-active', 'border-2', 'border-[#7865F5]', 'shadow-md', 'shadow-[#7865F5]/10');
+      card.classList.remove('border', 'border-surface-dim/40', 'shadow-xs');
+
+      const id = card.getAttribute('data-skill-id');
+      currentSelectedId = id;
+      updateInspector(id);
+    }
+
+    // Filter handler
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update filter button styling
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-[#7865F5]', 'text-white', 'shadow-xs', 'font-bold');
+          b.classList.add('text-tertiary', 'font-medium');
+        });
+        btn.classList.add('bg-[#7865F5]', 'text-white', 'shadow-xs', 'font-bold');
+        btn.classList.remove('text-tertiary', 'font-medium');
+
+        const filter = btn.getAttribute('data-filter');
+        let visibleCards = [];
+
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.style.display = 'block';
+            visibleCards.push(card);
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Inspector synchronization:
+        const currentCard = cards.find(c => c.getAttribute('data-skill-id') === currentSelectedId);
+        const isCurrentVisible = currentCard && visibleCards.includes(currentCard);
+
+        if (!isCurrentVisible && visibleCards.length > 0) {
+          selectCard(visibleCards[0]);
+        }
+      });
+    });
+
+    // Card click handler for inspector
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        selectCard(card);
+      });
+    });
+
+    // Initialize with default selection
+    const defaultCard = cards.find(c => c.getAttribute('data-skill-id') === currentSelectedId) || cards[0];
+    if (defaultCard) {
+      selectCard(defaultCard);
+    }
+  })();
+</script>
+
+
+</body></html>

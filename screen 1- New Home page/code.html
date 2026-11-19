@@ -1,0 +1,399 @@
+<!DOCTYPE html><html lang="en" style=""><head></head><body class="bg-[#FCF8FF] min-h-screen text-midnight antialiased flex flex-col justify-between selection:bg-electric selection:text-white"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SkillBridge AI — Student Workspace</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "canvas": "#FCF8FF",
+            "midnight": "#17152E",
+            "electric": "#7865F5",
+            "electric-hover": "#6450E8",
+            "lavender-subtle": "#EEEAFE",
+            "lavender-card": "#F6F1FF",
+            "lavender-border": "#E4DFFF",
+            "lime-accent": "#D7F36A",
+            "lime-dark": "#3B4500",
+            "text-subtle": "#696682"
+          },
+          fontFamily: {
+            sans: ["Manrope", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #FCF8FF;
+        color: #17152E;
+        font-family: 'Manrope', sans-serif;
+      }
+      ::-webkit-scrollbar { display: none; }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.18); opacity: 0.35; }
+    }
+
+    .node-pulse {
+      animation: pulseGlow 2.8s ease-in-out infinite;
+    }
+
+    .button-glow {
+      box-shadow: 0 10px 25px -4px rgba(120, 101, 245, 0.4);
+    }
+    .button-glow:hover {
+      box-shadow: 0 14px 30px -3px rgba(120, 101, 245, 0.55);
+    }
+  </style>
+
+
+<!-- CRITICAL: Exactly ONE single top navigation header (no duplicates, no stacked sub-header) -->
+<header class="sticky top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-[#EBE6F7] shadow-xs">
+<div class="max-w-[1440px] mx-auto px-6 md:px-8 h-16 flex items-center justify-between gap-4">
+<!-- Left: Logo Icon Mark & Compact EDU Badge ONLY (no wordmark text) -->
+<a class="flex items-center gap-2 group" href="#" aria-label="SkillBridge AI Home">
+<div class="w-9 h-9 rounded-xl bg-electric flex items-center justify-center text-white shadow-md shadow-electric/25 transition-transform group-hover:scale-105">
+<span class="material-symbols-outlined text-xl">hub</span>
+</div>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-md bg-lavender-subtle text-electric text-[10px] font-extrabold tracking-wider uppercase border border-electric/20">
+EDU
+</span>
+</a>
+
+<!-- Center: Student Navigation Links -->
+<nav class="hidden md:flex items-center gap-1 p-1 rounded-full bg-lavender-card border border-lavender-border/60">
+<a class="px-3.5 py-1 rounded-full text-sm font-bold bg-white text-electric shadow-xs transition-all" href="#">
+Home
+</a>
+<a class="px-3 py-1 rounded-full text-sm font-medium text-text-subtle hover:text-midnight transition-colors" href="#upload-resume">
+Upload Resume
+</a>
+<a class="px-3 py-1 rounded-full text-sm font-medium text-text-subtle hover:text-midnight transition-colors" href="#my-skills">
+My Skills
+</a>
+<a class="px-3 py-1 rounded-full text-sm font-medium text-text-subtle hover:text-midnight transition-colors" href="#explore-careers">
+Explore Careers
+</a>
+<a class="px-3 py-1 rounded-full text-sm font-medium text-text-subtle hover:text-midnight transition-colors" href="#skill-gap">
+Skill Gap Analysis
+</a>
+<a class="px-3 py-1 rounded-full text-sm font-medium text-text-subtle hover:text-midnight transition-colors" href="#my-roadmap">
+My Roadmap
+</a>
+</nav>
+
+<!-- Right: Circular Student Profile Avatar ONLY (No visible text labels) -->
+<div class="flex items-center">
+<div class="relative group" id="student-profile-trigger">
+<button aria-label="Student Profile" class="flex items-center justify-center p-0.5 rounded-full border border-lavender-border hover:border-electric/40 bg-white transition-colors" type="button">
+<div class="relative w-9 h-9 rounded-full bg-lavender-subtle text-electric flex items-center justify-center font-bold text-xs ring-1 ring-electric/30">
+AS
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-lime-accent ring-2 ring-white"></span>
+</div>
+</button>
+<!-- Interactive Dropdown Popover Card -->
+<div class="absolute right-0 top-12 w-80 p-5 rounded-2xl bg-white border border-[#E9E4F5] shadow-xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+<div class="flex items-center gap-3.5 pb-3 border-b border-lavender-subtle">
+<div class="w-12 h-12 rounded-xl bg-lavender-subtle text-electric flex items-center justify-center font-extrabold text-base ring-1 ring-electric/25">
+AS
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-bold text-midnight text-sm truncate">Aarav Sharma</span>
+<span class="text-xs text-text-subtle truncate">B.Tech Computer Science</span>
+<span class="text-[11px] text-text-subtle font-mono">Class of '26</span>
+</div>
+</div>
+<div class="py-3 flex flex-col gap-2">
+<div class="flex items-center justify-between text-xs">
+<span class="text-text-subtle">Campus:</span>
+<span class="font-semibold text-midnight">Apex Institute of Technology</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-text-subtle">Semester:</span>
+<span class="font-mono font-medium text-midnight">Semester 4 (Active)</span>
+</div>
+<div class="flex items-center justify-between text-xs pt-1">
+<span class="text-text-subtle">Workspace Status:</span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#FFFBEA] border border-[#F3E7BA] text-[#7A5A00] font-semibold text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E5B800]"></span>
+Pre-Upload / Awaiting Resume
+</span>
+</div>
+</div>
+<div class="pt-2">
+<a class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-electric text-white text-xs font-bold shadow-sm hover:bg-electric-hover transition-colors" href="#upload-resume">
+<span class="material-symbols-outlined text-[16px]">upload_file</span>
+Upload Resume Now
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Student Workspace Content -->
+<main class="w-full flex-grow flex flex-col justify-center">
+<!-- Workspace Hero Section -->
+<section class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 py-10 lg:py-14">
+<div class="relative overflow-hidden rounded-3xl bg-white border border-[#EBE6F7] shadow-sm p-8 sm:p-10 lg:p-16">
+<!-- Ambient Subtle Glow Blobs -->
+<div class="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-lavender-subtle/70 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-28 -left-28 w-80 h-80 rounded-full bg-lime-accent/25 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+<!-- Left: Personal Student Hero Info -->
+<div class="lg:col-span-6 flex flex-col items-start gap-6">
+<!-- Warm Personal Micro-Badge -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-lavender-card border border-lavender-border text-midnight text-xs font-semibold shadow-2xs">
+<span class="">👋 Hey Aarav · CS Cohort '26</span>
+</div>
+<!-- Expressive Headline & Concise Copy -->
+<div class="flex flex-col gap-3">
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-midnight leading-[1.12]">
+                Your future <br class="hidden sm:inline">looks <span class="text-electric underline decoration-lime-accent decoration-4 underline-offset-6">good on you.</span>
+</h1>
+<p class="text-base sm:text-lg text-text-subtle font-normal max-w-lg pt-1">
+                Discover your strengths, explore career paths, and find your next move.
+              </p>
+</div>
+<!-- Primary Workspace CTA Group -->
+<div class="flex flex-col items-start gap-3 w-full sm:w-auto pt-2">
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full">
+<a class="group button-glow inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-electric hover:bg-electric-hover text-white font-bold text-base transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0" href="#upload-resume">
+<span class="">Upload My Resume</span>
+<span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+<button class="inline-flex items-center justify-center gap-1.5 px-5 py-4 rounded-xl text-text-subtle hover:text-midnight hover:bg-lavender-card font-semibold text-sm transition-colors" onclick="document.getElementById('how-it-works-modal').classList.remove('hidden')" type="button">
+<span class="">Explore how it works</span>
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+</button>
+</div>
+<!-- Supporting small note -->
+<span class="text-xs text-text-subtle flex items-center gap-1.5 font-medium pl-1">
+<span class="material-symbols-outlined text-[15px] text-electric">verified_user</span>
+                Takes ~2 mins · PDF or DOCX · Encrypted academic sync
+              </span>
+</div>
+</div>
+<!-- Right: Visual Centerpiece (Artistic Glowing Pathway Mesh) -->
+<div class="lg:col-span-6 flex flex-col items-center">
+<div class="relative w-full max-w-lg p-6 sm:p-8 rounded-2xl bg-[#FAF8FF] border border-[#ECE7F8] shadow-inner">
+<!-- Clean Status Pill -->
+<div class="flex items-center justify-between pb-4 border-b border-lavender-subtle/80 mb-2">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-lavender-border text-midnight text-xs font-bold shadow-2xs">
+<span class="text-lime-dark">⚡</span>
+<span class="">Trajectory Unmapped</span>
+<span class="text-text-subtle font-normal">· Ready for ingestion</span>
+</div>
+<span class="text-[11px] font-mono text-text-subtle font-medium">B.Tech CS Sem 4</span>
+</div>
+<!-- Artistic SVG Career Pathway Canvas -->
+<div class="relative py-4 flex justify-center">
+<svg class="w-full h-auto max-h-[220px]" fill="none" viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Gradient for the trajectory line -->
+<linearGradient gradientUnits="userSpaceOnUse" id="pathGradient" x1="40" x2="420" y1="150" y2="50">
+<stop offset="0%" stop-color="#7865F5" stop-opacity="0.9"></stop>
+<stop offset="50%" stop-color="#B2A4FF" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#D7F36A" stop-opacity="0.9"></stop>
+</linearGradient>
+<!-- Glow filter for pulsing nodes -->
+<filter height="140%" id="neonGlowViolet" width="140%" x="-20%" y="-20%">
+<feGaussianBlur result="blur" stdDeviation="6"></feGaussianBlur>
+<feComposite in="SourceGraphic" in2="blur" operator="over"></feComposite>
+</filter>
+<filter height="140%" id="neonGlowLime" width="140%" x="-20%" y="-20%">
+<feGaussianBlur result="blur" stdDeviation="7"></feGaussianBlur>
+<feComposite in="SourceGraphic" in2="blur" operator="over"></feComposite>
+</filter>
+</defs>
+<!-- Flow Curve Area Glow -->
+<path d="M 40 150 Q 140 160 210 100 T 420 50 L 420 185 L 40 185 Z" fill="#EEEAFE" fill-opacity="0.35"></path>
+<!-- Connecting Dotted Trajectory -->
+<path d="M 40 150 C 110 150 140 100 210 100 C 280 100 330 50 420 50" stroke="url(#pathGradient)" stroke-dasharray="7 5" stroke-linecap="round" stroke-width="3.5"></path>
+<!-- Secondary Horizon Guidance Line -->
+<path d="M 40 135 Q 230 130 420 65" stroke="#E0DAF7" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<!-- NODE 1: Academic Baseline -->
+<g transform="translate(45, 150)">
+<circle cx="0" cy="0" fill="#FFFFFF" r="16" stroke="#E4DFFF" stroke-width="2"></circle>
+<circle cx="0" cy="0" fill="#7865F5" r="8"></circle>
+<text fill="#17152E" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle" x="0" y="28">Academic Baseline</text>
+<text fill="#696682" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="0" y="40">B.Tech CS Sem 4</text>
+</g>
+<!-- NODE 2: AI Skill Extraction (Awaiting Resume) with Pulse -->
+<g transform="translate(210, 100)">
+<!-- Outer pulsating aura -->
+<circle class="node-pulse" cx="0" cy="0" fill="#7865F5" fill-opacity="0.18" r="28"></circle>
+<circle cx="0" cy="0" fill="#7865F5" filter="url(#neonGlowViolet)" r="20"></circle>
+<circle cx="0" cy="0" fill="#6450E8" r="14"></circle>
+<!-- Document upload glyph -->
+<path d="M -4 -4 L 4 -4 L 4 4 L -4 4 Z" fill="none" stroke="#FFFFFF" stroke-linejoin="round" stroke-width="1.8"></path>
+<path d="M 0 -1 L 0 5 M -3 2 L 0 -1 L 3 2" fill="none" stroke="#D7F36A" stroke-linecap="round" stroke-width="1.8"></path>
+<text fill="#7865F5" font-family="Manrope" font-size="11" font-weight="800" text-anchor="middle" x="0" y="-26">Skill Extraction</text>
+<rect fill="#17152E" height="18" rx="9" width="96" x="-48" y="24"></rect>
+<text fill="#FFFFFF" font-family="Manrope" font-size="9" font-weight="700" text-anchor="middle" x="0" y="36.5">Awaiting Resume</text>
+</g>
+<!-- NODE 3: Verified Topology -->
+<g transform="translate(325, 72)">
+<circle cx="0" cy="0" fill="#FFFFFF" r="12" stroke="#E4DFFF" stroke-width="1.5"></circle>
+<circle cx="0" cy="0" fill="#B2A4FF" r="5"></circle>
+<text fill="#696682" font-family="Manrope" font-size="9.5" font-weight="600" text-anchor="middle" x="0" y="24">Skill Topology</text>
+</g>
+<!-- NODE 4: Dream Tech Roles (Target Horizon) with Lime Glow -->
+<g transform="translate(420, 50)">
+<circle class="node-pulse" cx="0" cy="0" fill="#D7F36A" fill-opacity="0.3" r="22"></circle>
+<circle cx="0" cy="0" fill="#FFFFFF" filter="url(#neonGlowLime)" r="16" stroke="#D7F36A" stroke-width="2.5"></circle>
+<circle cx="0" cy="0" fill="#3B4500" r="8"></circle>
+<circle cx="0" cy="0" fill="#D7F36A" r="3"></circle>
+<text fill="#17152E" font-family="Manrope" font-size="11" font-weight="700" text-anchor="middle" x="0" y="28">Dream Tech Roles</text>
+<text fill="#3B4500" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="0" y="40">Target Horizon</text>
+</g>
+</svg>
+</div>
+<!-- Bottom prompt note -->
+<div class="mt-2 text-center">
+<p class="text-xs text-text-subtle">
+                  Upload your coursework, project report, or resume to connect and map your personalized trajectory.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Three-Step Connected Sequence (Compact sleek track, not oversized cards) -->
+<section class="w-full max-w-[1440px] mx-auto px-6 lg:px-10 pb-16">
+<div class="flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<span class="text-xs font-extrabold uppercase tracking-widest text-electric">Your 3-Step Journey</span>
+<span class="text-xs font-mono text-text-subtle">Estimated time: 2 mins</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 relative">
+<!-- Stepper item 1 -->
+<div class="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#ECE7F8] hover:border-electric/30 transition-colors shadow-2xs">
+<div class="w-10 h-10 rounded-xl bg-lavender-subtle text-electric flex-shrink-0 flex items-center justify-center font-mono font-bold text-sm">
+              01
+            </div>
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-sm text-midnight">Discover Skills</h3>
+<p class="text-xs text-text-subtle leading-relaxed">
+                Parse coursework, GitHub repos &amp; projects into verified proficiencies.
+              </p>
+</div>
+</div>
+<!-- Stepper item 2 -->
+<div class="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#ECE7F8] hover:border-electric/30 transition-colors shadow-2xs">
+<div class="w-10 h-10 rounded-xl bg-lavender-subtle text-electric flex-shrink-0 flex items-center justify-center font-mono font-bold text-sm">
+              02
+            </div>
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-sm text-midnight">Explore Careers</h3>
+<p class="text-xs text-text-subtle leading-relaxed">
+                Benchmark against Tier-1 campus hiring profiles &amp; emerging tracks.
+              </p>
+</div>
+</div>
+<!-- Stepper item 3 -->
+<div class="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#ECE7F8] hover:border-electric/30 transition-colors shadow-2xs">
+<div class="w-10 h-10 rounded-xl bg-[#FAF7CD] text-lime-dark flex-shrink-0 flex items-center justify-center font-mono font-bold text-sm">
+              03
+            </div>
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-sm text-midnight">Build Your Roadmap</h3>
+<p class="text-xs text-text-subtle leading-relaxed">
+                Bridge gaps with actionable weekly micro-sprints and curated projects.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Interactive "How It Works" Lightweight Modal Preview -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-midnight/40 backdrop-blur-xs hidden" id="how-it-works-modal">
+<div class="relative w-full max-w-md p-6 rounded-3xl bg-white shadow-2xl border border-lavender-border flex flex-col gap-4">
+<div class="flex items-center justify-between pb-1 border-b border-lavender-subtle">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-electric"></span>
+<h3 class="font-bold text-base text-midnight">How SkillBridge Operates</h3>
+</div>
+<button aria-label="Close modal" class="p-1 rounded-lg text-text-subtle hover:text-midnight hover:bg-lavender-card transition-colors" onclick="document.getElementById('how-it-works-modal').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-3 text-xs text-text-subtle">
+<div class="p-3 rounded-xl bg-lavender-card flex items-start gap-3">
+<span class="font-mono font-bold text-electric">01</span>
+<div>
+<strong class="text-midnight block">Drop your resume or project links</strong>
+<span class="">SkillBridge AI reads academic syllabi, coursework, and personal builds without storing sensitive PII.</span>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-lavender-card flex items-start gap-3">
+<span class="font-mono font-bold text-electric">02</span>
+<div>
+<strong class="text-midnight block">Pin your aspirational roles</strong>
+<span class="">Compare current competencies directly to industry-standard benchmarks.</span>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-lavender-card flex items-start gap-3">
+<span class="font-mono font-bold text-electric">03</span>
+<div>
+<strong class="text-midnight block">Unlock tailored sprints</strong>
+<span class="">Close specific skill deltas with bite-sized semester milestones before campus placement season.</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end gap-2 pt-2">
+<button class="px-4 py-2 rounded-xl text-xs font-semibold text-text-subtle hover:text-midnight" onclick="document.getElementById('how-it-works-modal').classList.add('hidden')" type="button">
+          Got it
+        </button>
+<a class="px-4 py-2 rounded-xl bg-electric text-white text-xs font-bold hover:bg-electric-hover transition-colors" href="#upload-resume" onclick="document.getElementById('how-it-works-modal').classList.add('hidden')">
+          Upload Resume
+        </a>
+</div>
+</div>
+</div>
+<script>
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('how-it-works-modal');
+        if (modal && !modal.classList.contains('hidden')) {
+          modal.classList.add('hidden');
+        }
+      }
+    });
+  </script>
+<!-- Clean, Minimal Footer (Partner Credit & Integrity) -->
+<footer class="w-full bg-white border-t border-[#ECE7F8] py-5">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-text-subtle">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-electric"></span>
+<span class="">Apex Institute of Technology Partnership</span>
+</div>
+<div class="flex items-center gap-5">
+<a class="hover:text-midnight transition-colors" href="#">Academic Integrity</a>
+<span class="">·</span>
+<a class="hover:text-midnight transition-colors" href="#">Data Privacy</a>
+<span class="">·</span>
+<span class="font-mono text-[11px]">SkillBridge v2.4</span>
+</div>
+</div>
+</footer>
+
+
+</body></html>

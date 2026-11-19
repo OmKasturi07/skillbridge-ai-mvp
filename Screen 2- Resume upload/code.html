@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>SkillBridge AI — Career Readiness Platform</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#715eee",
+            "on-secondary-fixed-variant": "#3f4c00",
+            "outline-variant": "#c9c4d7",
+            "inverse-primary": "#c7bfff",
+            "on-error-container": "#93000a",
+            "on-surface": "#1a1832",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed": "#e5deff",
+            "surface-dim": "#dbd6f8",
+            "surface": "#fcf8ff",
+            "tertiary-container": "#757384",
+            "tertiary": "#5c5a6b",
+            "surface-container-low": "#f6f1ff",
+            "surface-variant": "#e4dfff",
+            "surface-container": "#f0ebff",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed-variant": "#464555",
+            "secondary": "#546500",
+            "on-primary-fixed-variant": "#4226bd",
+            "background": "#fcf8ff",
+            "surface-bright": "#fcf8ff",
+            "outline": "#787586",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#181e00",
+            "surface-container-high": "#eae5ff",
+            "on-tertiary-fixed": "#1b1a28",
+            "on-secondary-container": "#596c00",
+            "tertiary-fixed": "#e4e0f4",
+            "on-secondary": "#ffffff",
+            "surface-tint": "#5a45d6",
+            "inverse-on-surface": "#f3eeff",
+            "primary": "#5842d3",
+            "secondary-container": "#d3ef66",
+            "on-surface-variant": "#474554",
+            "inverse-surface": "#302d48",
+            "on-background": "#1a1832",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#180065",
+            "on-tertiary-container": "#fffbff",
+            "secondary-fixed-dim": "#b7d24d",
+            "on-error": "#ffffff",
+            "on-primary-container": "#fffbff",
+            "primary-fixed-dim": "#c7bfff",
+            "secondary-fixed": "#d3ef66",
+            "tertiary-fixed-dim": "#c8c4d7",
+            "surface-container-highest": "#e4dfff"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          spacing: {
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "gutter-sm": "1rem",
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "margin": "2rem",
+            "margin-sm": "1rem"
+          },
+          fontFamily: {
+            "display-hero-mobile": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "body-md": ["Manrope"],
+            "headline-xl": ["Manrope"],
+            "body-lg": ["Manrope"],
+            "label-numeric": ["JetBrains Mono"],
+            "display-hero": ["Manrope"],
+            "label-badge": ["Manrope"],
+            "body-sm": ["Manrope"]
+          },
+          fontSize: {
+            "display-hero-mobile": ["32px", { lineHeight: "38px", letterSpacing: "-0.02em", fontWeight: "800" }],
+            "headline-md": ["18px", { lineHeight: "24px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "700" }],
+            "body-md": ["14px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "400" }],
+            "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "body-lg": ["16px", { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "400" }],
+            "label-numeric": ["14px", { lineHeight: "20px", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "display-hero": ["48px", { lineHeight: "54px", letterSpacing: "-0.03em", fontWeight: "800" }],
+            "label-badge": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "700" }],
+            "body-sm": ["12px", { lineHeight: "18px", letterSpacing: "0em", fontWeight: "500" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #FAF9F6;
+        color: #1a1832;
+        font-family: 'Manrope', sans-serif;
+      }
+      ::-webkit-scrollbar { display: none; }
+    }
+  </style>
+</head>
+<body class="bg-[#FAF9F6] text-on-surface antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col justify-between">
+<!-- Persistent Top Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#FAF9F6]/90 backdrop-blur-xl border-b border-surface-container-high"><div class="max-w-[1440px] mx-auto px-margin-sm md:px-margin lg:px-space-xl"><div class="h-16 flex items-center justify-between gap-space-md"><div class="flex items-center gap-2 flex-shrink-0"><a class="flex items-center gap-2 group" href="#"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm shadow-primary/30 transition-transform group-hover:scale-105"><span class="material-symbols-outlined text-xl">hub</span></div><span class="px-2 py-0.5 rounded-md bg-surface-container-high text-primary font-label-badge text-label-badge uppercase tracking-wider font-bold">EDU</span></a></div><nav class="hidden md:flex items-center gap-1 p-1 rounded-xl bg-surface-container font-body-sm text-body-sm"><a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest/60 transition-all font-medium" href="#">Home</a><a aria-current="page" class="px-3.5 py-1.5 rounded-lg transition-all bg-[#7865F5] text-white shadow-xs font-semibold" href="#">Upload Resume</a><a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest/60 transition-all font-medium" href="#">My Skills</a><a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest/60 transition-all font-medium" href="#">Explore Careers</a><a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest/60 transition-all font-medium" href="#">Skill Gap Analysis</a><a class="px-3.5 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-lowest/60 transition-all font-medium" href="#">My Roadmap</a></nav><div class="relative group flex items-center"><button class="w-10 h-10 rounded-full bg-primary-fixed text-primary font-bold text-sm flex items-center justify-center ring-2 ring-primary/20 hover:ring-primary transition-all focus:outline-none cursor-pointer" id="profile-avatar-btn" type="button">AS</button><div class="absolute right-0 top-full mt-2 w-72 rounded-2xl bg-surface-container-lowest p-4 shadow-xl border border-surface-container-high hidden group-hover:block hover:block z-50 transition-all"><div class="flex items-center gap-3 mb-3 pb-3 border-b border-surface-container"><img alt="Aarav Sharma" class="w-12 h-12 rounded-full object-cover ring-2 ring-primary/25" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1LJY_yHHHcAjuehUQO44jDQnNRdwcpx7sFtOWTkoHuTPXrqkzD4x3h0CTIOQvhZZNOPRaEHyfv37BnDhCIK2A2V4tb3KPW9ZZkjkiaz8ah8Mv8LL7PAwivhUp0P-_jm-fNRioYex3OAEGrdqutrYS8ZpqhmYJ2mGOZV5O4vkFBgzUjPUj_iwYOI6gIP2OGp_SfevpN4eaBsGFw-6zYuahnz_W4qzXvMO75GTEOj4NHyAVPMvcjC4X"/><div><h4 class="font-headline-md text-sm text-on-surface font-bold leading-tight">Aarav Sharma</h4><p class="font-body-sm text-[11px] text-tertiary leading-tight mt-0.5">B.Tech Computer Science &amp; Eng.</p><span class="inline-block px-1.5 py-0.5 rounded bg-surface-container text-tertiary font-label-numeric text-[10px] mt-1">Class of 2026</span></div></div><div class="flex items-center justify-between text-xs font-body-sm text-on-surface-variant"><span class="flex items-center gap-1 text-secondary font-semibold"><span class="material-symbols-outlined text-sm">verified</span> Apex Institute of Technology</span><span class="font-label-numeric text-primary font-semibold">Active</span></div></div></div></div></div></header>
+<!-- Main Slot -->
+<main class="w-full pt-20 pb-space-xl flex-grow">
+<div class="max-w-4xl mx-auto px-margin-sm md:px-margin py-space-sm">
+<!-- 2. Compact Elegant 3-Step Progress Indicator -->
+<div class="mb-space-lg flex items-center justify-center">
+<div class="flex items-center gap-3 bg-surface-container-lowest px-5 py-2.5 rounded-full shadow-xs border border-surface-container-high/60">
+<!-- Step 1: Profile (Completed) -->
+<div class="flex items-center gap-1.5 text-secondary">
+<div class="w-5 h-5 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed text-xs font-bold">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<span class="font-body-sm text-xs font-semibold text-on-surface">1. Profile</span>
+</div>
+<div class="w-6 h-0.5 bg-secondary-fixed rounded-full"></div>
+<!-- Step 2: Resume & Target Role (Current Active) -->
+<div class="flex items-center gap-1.5 text-primary">
+<div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center text-on-primary text-xs font-bold shadow-xs">
+            2
+          </div>
+<span class="font-headline-md text-xs font-bold text-primary">2. Resume &amp; Target Role</span>
+</div>
+<div class="w-6 h-0.5 bg-surface-container rounded-full"></div>
+<!-- Step 3: Skill Analysis (Pending) -->
+<div class="flex items-center gap-1.5 text-tertiary opacity-70">
+<div class="w-5 h-5 rounded-full bg-surface-container text-tertiary flex items-center justify-center text-xs font-semibold">
+            3
+          </div>
+<span class="font-body-sm text-xs text-tertiary">3. Skill Analysis</span>
+</div>
+</div>
+</div>
+<!-- 3. Page Purpose & Typography Header -->
+<div class="text-center mb-space-lg max-w-2xl mx-auto">
+<h1 class="font-display-hero text-headline-xl md:text-display-hero text-on-surface tracking-tight mb-2">
+        Let's discover what you're capable of.
+      </h1>
+<p class="font-body-lg text-body-md md:text-body-lg text-on-surface-variant leading-relaxed">
+        Upload your resume, choose a career direction, and discover the skills that can take you there.
+      </p>
+</div>
+<!-- 4. Central Resume Upload Area -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg md:p-space-xl shadow-sm border border-surface-container-high/60 mb-space-lg">
+<div class="flex items-center justify-between pb-3 mb-2 border-b border-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">upload_file</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Resume Ingestion</h2>
+</div>
+<span class="font-label-numeric text-xs text-tertiary">PDF, DOCX up to 15MB</span>
+</div>
+<!-- Interactive Dropzone -->
+<div class="mt-space-sm relative rounded-xl p-space-lg md:p-space-xl flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-200 border-2 border-dashed border-primary/25 bg-surface-container-low/40 hover:bg-surface-container-low hover:border-primary" id="dropzone-area">
+<div class="w-14 h-14 rounded-2xl bg-primary-fixed flex items-center justify-center text-primary mb-3 shadow-xs">
+<span class="material-symbols-outlined text-3xl">cloud_upload</span>
+</div>
+<p class="font-headline-md text-body-lg text-on-surface mb-1">
+          Drag &amp; drop your resume here, or <span class="text-primary underline underline-offset-4 decoration-primary/40 font-bold hover:decoration-primary">Browse Files</span>
+</p>
+<p class="font-body-sm text-xs text-tertiary">Supports PDF, DOCX, TXT (up to 15MB). Clean in-memory parsing.</p>
+<input accept=".pdf,.docx,.doc,.txt" class="hidden" id="resume-file-input" type="file"/>
+</div>
+<!-- Selected File State -->
+<div class="mt-space-md bg-surface-container-low rounded-xl p-3.5 flex items-center justify-between gap-space-md border border-surface-container" id="staged-file-card">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary flex-shrink-0 shadow-xs">
+<span class="material-symbols-outlined text-xl">description</span>
+</div>
+<div class="min-w-0 flex flex-col text-left">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-body-md text-on-surface truncate font-semibold" id="file-name-label">aarav_sharma_btech_cs.pdf</span>
+<span class="font-label-numeric text-xs text-tertiary flex-shrink-0" id="file-size-label">1.8 MB</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed font-label-badge text-[11px] font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-xs">check_circle</span> Ready for Analysis
+              </span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2 flex-shrink-0">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container text-xs font-semibold shadow-xs transition-colors flex items-center gap-1" id="file-replace-btn" type="button">
+<span class="material-symbols-outlined text-sm">sync</span> Replace
+          </button>
+<button class="p-1.5 rounded-lg text-tertiary hover:text-error hover:bg-error-container/30 transition-colors" id="file-remove-btn" title="Remove file" type="button">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 5. Target Career Selection Card -->
+<!-- 6. Primary Action CTA Area -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg md:p-space-xl shadow-sm border border-surface-container-high/60 mb-space-lg" id="career-selection-card">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-1 mb-space-md">
+<div>
+<span class="font-label-badge text-label-badge uppercase tracking-wider text-primary font-bold">Placement Goal</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Select Target Career Direction</h3>
+</div>
+<p class="font-body-sm text-xs text-tertiary">
+          Calibrates market benchmarks for your skill-gap report
+        </p>
+</div>
+<!-- Full-Width Search Input Bar with Suggestions Dropdown -->
+<div class="relative mb-4">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-primary text-xl pointer-events-none">search</span>
+<input class="w-full pl-11 pr-10 py-3 rounded-xl bg-surface-container-low border border-surface-container text-on-surface placeholder:text-tertiary font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" id="role-search-input" placeholder="Search a role, e.g. AI Engineer, Data Analyst, QA Automation Engineer..." type="text" value="QA Automation Engineer"/>
+<button class="absolute right-3 p-1 rounded-lg text-tertiary hover:text-on-surface hover:bg-surface-container transition-all flex items-center justify-center" id="role-clear-btn" title="Clear role selection" type="button">
+<span class="material-symbols-outlined text-base">close</span>
+</button>
+</div>
+<!-- Interactive Suggestions Dropdown -->
+<div class="absolute left-0 right-0 top-full mt-1.5 bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-xl hidden z-50 overflow-hidden" id="role-dropdown">
+<div class="p-1.5 max-h-60 overflow-y-auto space-y-0.5" id="role-suggestions-list">
+<button class="suggestion-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-left hover:bg-surface-container-low transition-colors group" data-role="QA Automation Engineer" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-sm text-primary">verified</span>
+<span class="font-headline-md text-body-sm text-on-surface font-semibold">QA Automation Engineer</span>
+</div>
+<span class="font-body-sm text-[11px] text-tertiary">Quality &amp; Testing</span>
+</button>
+<button class="suggestion-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-left hover:bg-surface-container-low transition-colors group" data-role="Software Tester" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-sm text-tertiary group-hover:text-primary transition-colors">work</span>
+<span class="font-headline-md text-body-sm text-on-surface">Software Tester / QA Engineer</span>
+</div>
+<span class="font-body-sm text-[11px] text-tertiary">Quality &amp; Testing</span>
+</button>
+<button class="suggestion-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-left hover:bg-surface-container-low transition-colors group" data-role="Python Developer" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-sm text-tertiary group-hover:text-primary transition-colors">code</span>
+<span class="font-headline-md text-body-sm text-on-surface">Python Developer</span>
+</div>
+<span class="font-body-sm text-[11px] text-tertiary">Backend &amp; Scripting</span>
+</button>
+<button class="suggestion-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-left hover:bg-surface-container-low transition-colors group" data-role="Data Analyst" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-sm text-tertiary group-hover:text-primary transition-colors">analytics</span>
+<span class="font-headline-md text-body-sm text-on-surface">Data Analyst</span>
+</div>
+<span class="font-body-sm text-[11px] text-tertiary">Data &amp; BI</span>
+</button>
+<button class="suggestion-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-left hover:bg-surface-container-low transition-colors group" data-role="AI/ML Engineer" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-sm text-tertiary group-hover:text-primary transition-colors">psychology</span>
+<span class="font-headline-md text-body-sm text-on-surface">AI / ML Engineer</span>
+</div>
+<span class="font-body-sm text-[11px] text-tertiary">Artificial Intelligence</span>
+</button>
+<button class="suggestion-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-left hover:bg-surface-container-low transition-colors group" data-role="Full Stack Developer" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-sm text-tertiary group-hover:text-primary transition-colors">layers</span>
+<span class="font-headline-md text-body-sm text-on-surface">Full Stack Developer</span>
+</div>
+<span class="font-body-sm text-[11px] text-tertiary">Software Engineering</span>
+</button>
+<button class="suggestion-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-left hover:bg-surface-container-low transition-colors group" data-role="Cloud / DevOps Engineer" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-sm text-tertiary group-hover:text-primary transition-colors">cloud</span>
+<span class="font-headline-md text-body-sm text-on-surface">Cloud / DevOps Engineer</span>
+</div>
+<span class="font-body-sm text-[11px] text-tertiary">Infrastructure</span>
+</button>
+<button class="suggestion-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-left hover:bg-surface-container-low transition-colors group" data-role="Cybersecurity Analyst" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-sm text-tertiary group-hover:text-primary transition-colors">shield</span>
+<span class="font-headline-md text-body-sm text-on-surface">Cybersecurity Analyst</span>
+</div>
+<span class="font-body-sm text-[11px] text-tertiary">Security</span>
+</button>
+<button class="suggestion-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-left hover:bg-surface-container-low transition-colors group" data-role="UI/UX Designer" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-sm text-tertiary group-hover:text-primary transition-colors">design_services</span>
+<span class="font-headline-md text-body-sm text-on-surface">UI/UX Designer</span>
+</div>
+<span class="font-body-sm text-[11px] text-tertiary">Product Design</span>
+</button>
+</div>
+<div class="p-2.5 bg-surface-container-low/60 border-t border-surface-container flex items-center justify-between">
+<a class="font-body-sm text-xs text-primary hover:underline font-semibold flex items-center gap-1" href="#">
+<span class="">Explore all 40+ catalog roles</span>
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a>
+<span class="font-body-sm text-[11px] text-tertiary">Press Esc to close</span>
+</div>
+</div>
+</div>
+<!-- Selected Role Summary Pill / Indicator -->
+<div class="mb-3 flex items-center justify-between p-2.5 px-3.5 rounded-xl bg-surface-container-low/60 border border-surface-container" id="selected-role-bar">
+<div class="flex items-center gap-2 min-w-0">
+<span class="font-body-sm text-xs text-tertiary flex-shrink-0">Selected Goal:</span>
+<span class="font-headline-md text-body-sm text-primary font-bold truncate" id="selected-role-name">QA Automation Engineer</span>
+</div>
+<button class="text-xs text-tertiary hover:text-error transition-colors flex items-center gap-1 font-body-sm" id="selected-role-clear-chip" type="button">
+<span class="material-symbols-outlined text-sm">close</span> Clear
+        </button>
+</div>
+<!-- Quick Select Chips Group -->
+<div class="mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="font-body-sm text-xs text-tertiary font-semibold uppercase tracking-wider">Popular Pathways</span>
+<span class="font-body-sm text-[11px] text-tertiary">Click to toggle</span>
+</div>
+<div class="flex flex-wrap gap-2.5" id="role-selector-group"><button class="role-pill-btn group relative flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-on-primary font-headline-md text-body-sm shadow-sm transition-all duration-200" data-role="QA Automation Engineer" type="button"><span class="material-symbols-outlined text-base">check_circle</span><span class="font-bold">QA Automation Engineer</span></button><button class="role-pill-btn group relative flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-headline-md text-body-sm transition-all duration-200" data-role="Python Developer" type="button"><span class="material-symbols-outlined text-base text-tertiary">radio_button_unchecked</span><span>Python Developer</span></button><button class="role-pill-btn group relative flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-headline-md text-body-sm transition-all duration-200" data-role="Data Analyst" type="button"><span class="material-symbols-outlined text-base text-tertiary">radio_button_unchecked</span><span>Data Analyst</span></button><button class="role-pill-btn group relative flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-headline-md text-body-sm transition-all duration-200" data-role="AI/ML Engineer" type="button"><span class="material-symbols-outlined text-base text-tertiary">radio_button_unchecked</span><span>AI/ML Engineer</span></button><button class="role-pill-btn group relative flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-headline-md text-body-sm transition-all duration-200" data-role="Full Stack Developer" type="button"><span class="material-symbols-outlined text-base text-tertiary">radio_button_unchecked</span><span>Full Stack Developer</span></button><button class="role-pill-btn group relative flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-headline-md text-body-sm transition-all duration-200" data-role="Cloud / DevOps Engineer" type="button"><span class="material-symbols-outlined text-base text-tertiary">radio_button_unchecked</span><span>Cloud/DevOps Engineer</span></button></div>
+</div>
+<!-- Journey B: Help me discover my career option card -->
+<div class="cursor-pointer rounded-xl p-3.5 border-2 border-surface-container bg-surface-container-low/40 hover:bg-surface-container-low hover:border-primary/40 transition-all duration-200 flex items-start gap-3.5" id="discover-career-option">
+<div class="w-5 h-5 mt-0.5 rounded-full border-2 border-outline-variant flex items-center justify-center flex-shrink-0 transition-all" id="discover-career-radio">
+<span class="material-symbols-outlined text-xs text-transparent">check</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">auto_awesome</span>
+<span class="font-headline-md text-body-md text-on-surface font-bold">I'm not sure yet — help me discover my career</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-badge text-[10px] font-bold uppercase tracking-wider">Path B</span>
+</div>
+<p class="font-body-sm text-xs text-tertiary mt-0.5">SkillBridge AI will recommend suitable careers based on your available skills, coursework, projects, and interests.</p>
+</div>
+</div>
+<p class="mt-4 font-body-sm text-xs text-tertiary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-secondary">info</span>
+<span class="">Your target role calibrates market benchmark rubrics for your personalized skill-gap analysis.</span>
+</p>
+</div>
+<!-- 7. Sleek Academic Privacy Reassurance Badge -->
+<div class="flex flex-col items-center justify-center gap-3 pt-space-xs mb-space-lg text-center">
+<button class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-[#7865F5] text-white font-headline-md text-base font-bold shadow-md shadow-primary/30 hover:bg-primary-container transition-all active:scale-[0.98]" id="discover-skills-btn" type="button">
+<span class="" id="cta-btn-text">Analyze Skill Gaps for QA Automation Engineer</span>
+<span class="material-symbols-outlined text-lg" id="cta-btn-icon">arrow_forward</span>
+</button>
+<a class="font-body-sm text-xs text-primary hover:underline transition-colors flex items-center gap-1" href="#">
+<span class="">Or continue with existing coursework profile (Apex CS '26)</span>
+<span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Client-side Interactive Logic Script -->
+<script>
+  (function() {
+    // Role selector pill toggles
+    const rolePills = document.querySelectorAll('.role-pill-btn');
+    rolePills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        rolePills.forEach(p => {
+          p.className = 'role-pill-btn group relative flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-headline-md text-body-sm transition-all duration-200';
+          const icon = p.querySelector('.material-symbols-outlined');
+          if (icon) {
+            icon.textContent = 'radio_button_unchecked';
+            icon.className = 'material-symbols-outlined text-base text-tertiary';
+          }
+        });
+        pill.className = 'role-pill-btn group relative flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-on-primary font-headline-md text-body-sm shadow-sm transition-all duration-200';
+        const activeIcon = pill.querySelector('.material-symbols-outlined');
+        if (activeIcon) {
+          activeIcon.textContent = 'check_circle';
+          activeIcon.className = 'material-symbols-outlined text-base';
+        }
+      });
+    });
+
+    // File picker and staged card handlers
+    const fileInput = document.getElementById('resume-file-input');
+    const dropzone = document.getElementById('dropzone-area');
+    const stagedCard = document.getElementById('staged-file-card');
+    const nameLabel = document.getElementById('file-name-label');
+    const sizeLabel = document.getElementById('file-size-label');
+    const replaceBtn = document.getElementById('file-replace-btn');
+    const removeBtn = document.getElementById('file-remove-btn');
+
+    if (dropzone && fileInput) {
+      dropzone.addEventListener('click', () => fileInput.click());
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('bg-surface-container');
+      });
+      dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('bg-surface-container');
+      });
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('bg-surface-container');
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+          const file = e.dataTransfer.files[0];
+          if (nameLabel) nameLabel.textContent = file.name;
+          if (sizeLabel) sizeLabel.textContent = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+          if (stagedCard) stagedCard.classList.remove('hidden');
+        }
+      });
+    }
+
+    if (fileInput) {
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          const file = e.target.files[0];
+          if (nameLabel) nameLabel.textContent = file.name;
+          if (sizeLabel) sizeLabel.textContent = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+          if (stagedCard) stagedCard.classList.remove('hidden');
+        }
+      });
+    }
+
+    if (replaceBtn && fileInput) {
+      replaceBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        fileInput.click();
+      });
+    }
+
+    if (removeBtn && stagedCard) {
+      removeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        stagedCard.classList.add('hidden');
+      });
+    }
+
+    const cta = document.getElementById('discover-skills-btn');
+    if (cta) {
+      cta.addEventListener('click', () => {
+        cta.innerHTML = '<span class="material-symbols-outlined text-base animate-spin">sync</span> <span>Analyzing Profile...</span>';
+        setTimeout(() => {
+          cta.innerHTML = '<span class="material-symbols-outlined text-base">check</span> <span>Skills Synthesized</span>';
+        }, 1200);
+      });
+    }
+  })();
+  </script>
+</main>
+<!-- Academic Platform Footer -->
+<footer class="w-full bg-[#FAF9F6] border-t border-[#17152E]/10 py-4 mt-auto">
+<div class="max-w-[1440px] mx-auto px-margin-sm md:px-margin lg:px-space-xl flex flex-col md:flex-row items-center justify-between gap-2 font-body-sm text-xs text-tertiary">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="">Apex Institute of Technology Partnership • SkillBridge AI</span>
+</div>
+<div class="flex items-center gap-4">
+<a class="hover:text-on-surface transition-colors" href="#">Academic Integrity</a>
+<span class="">•</span>
+<a class="hover:text-on-surface transition-colors" href="#">Data Privacy</a>
+<span class="">•</span>
+<span class="font-label-numeric text-[11px]">v2.4</span>
+</div>
+</div>
+</footer>
+</body></html>

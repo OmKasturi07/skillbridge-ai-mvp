@@ -1,0 +1,503 @@
+<!DOCTYPE html><html lang="en" style=""><head></head><body class="bg-canvas min-h-screen text-midnight antialiased flex flex-col justify-between selection:bg-electric selection:text-white"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
+<title>SkillBridge AI — Student Career Readiness Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "canvas": "#FAF9F6",
+            "midnight": "#17152E",
+            "electric": "#7865F5",
+            "electric-hover": "#6450E8",
+            "lavender-subtle": "#EEEAFE",
+            "lavender-card": "#F5F2FF",
+            "lime-accent": "#D7F36A",
+            "lime-accent-dark": "#364100",
+            "surface-white": "#FFFFFF",
+            "text-subtle": "#696682"
+          },
+          fontFamily: {
+            sans: ["Manrope", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #FAF9F6;
+        color: #17152E;
+        font-family: 'Manrope', sans-serif;
+      }
+      ::-webkit-scrollbar { display: none; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .animate-ring-progress {
+        animation: fillProgressRing 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .animate-bar-py { animation: expandBarPy 1.2s ease-out forwards; }
+      .animate-bar-sql { animation: expandBarSql 1.2s ease-out forwards; }
+      .animate-bar-git { animation: expandBarGit 1.2s ease-out forwards; }
+      .animate-bar-api { animation: expandBarApi 1.2s ease-out forwards; }
+      .card-hover-lift {
+        transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+      }
+      .card-hover-lift:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px -8px rgba(23, 21, 46, 0.08);
+      }
+    }
+
+    @keyframes fillProgressRing {
+      from { stroke-dashoffset: 427.25; }
+      to { stroke-dashoffset: 136.72; }
+    }
+    @keyframes expandBarPy { from { width: 0%; } to { width: 92%; } }
+    @keyframes expandBarSql { from { width: 0%; } to { width: 85%; } }
+    @keyframes expandBarGit { from { width: 0%; } to { width: 80%; } }
+    @keyframes expandBarApi { from { width: 0%; } to { width: 78%; } }
+
+    .glow-lime {
+      box-shadow: 0 4px 20px -2px rgba(215, 243, 106, 0.45);
+    }
+    .glow-lime:hover {
+      box-shadow: 0 6px 26px 0px rgba(215, 243, 106, 0.65);
+    }
+  </style>
+
+
+<!-- Persistent Top Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#FAF9F6]/90 backdrop-blur-xl border-b border-[#EAE7E1]"><div class="max-w-[1440px] mx-auto px-6 lg:px-10"><div class="h-16 flex items-center justify-between gap-4"><div class="flex items-center gap-2 flex-shrink-0"><a class="flex items-center gap-2 group" href="#"><div class="w-9 h-9 rounded-xl bg-[#7865F5] flex items-center justify-center text-white shadow-sm shadow-[#7865F5]/30 transition-transform group-hover:scale-105"><span class="material-symbols-outlined text-xl">hub</span></div><span class="px-2 py-0.5 rounded-md bg-[#EEEAFE] text-[#7865F5] text-[11px] uppercase tracking-wider font-bold">EDU</span></a></div><nav class="hidden md:flex items-center gap-1 p-1 rounded-xl bg-[#F0ECFA] text-xs"><a aria-current="page" class="px-3.5 py-1.5 rounded-lg transition-all bg-[#7865F5] text-white shadow-xs font-semibold" href="#">Home</a><a class="px-3.5 py-1.5 rounded-lg text-text-subtle hover:text-midnight hover:bg-white/60 transition-all font-medium" href="#upload-resume" onclick="window.location.hash='upload-resume';">Upload Resume</a><a class="px-3.5 py-1.5 rounded-lg text-text-subtle hover:text-midnight hover:bg-white/60 transition-all font-medium" href="#my-skills" onclick="window.location.hash='my-skills';">My Skills</a><a class="px-3.5 py-1.5 rounded-lg text-text-subtle hover:text-midnight hover:bg-white/60 transition-all font-medium" href="#explore-careers" onclick="window.location.hash='explore-careers';">Explore Careers</a><a class="px-3.5 py-1.5 rounded-lg text-text-subtle hover:text-midnight hover:bg-white/60 transition-all font-medium" href="#skill-gap" onclick="window.location.hash='skill-gap';">Skill Gap Analysis</a><a class="px-3.5 py-1.5 rounded-lg text-text-subtle hover:text-midnight hover:bg-white/60 transition-all font-medium" href="#my-roadmap" onclick="window.location.hash='my-roadmap';">My Roadmap</a></nav><div class="relative group flex items-center"><button type="button" id="profile-avatar-btn" class="w-10 h-10 rounded-full bg-[#EAE5FE] text-[#7865F5] font-bold text-sm flex items-center justify-center ring-2 ring-[#7865F5]/20 hover:ring-[#7865F5] transition-all focus:outline-none cursor-pointer">AS</button><div class="absolute right-0 top-full mt-2 w-72 rounded-2xl bg-white p-4 shadow-xl border border-[#EAE7DF] hidden group-hover:block hover:block z-50 transition-all"><div class="flex items-center gap-3 mb-3 pb-3 border-b border-[#F0ECE1]"><img alt="Aarav Sharma" class="w-12 h-12 rounded-full object-cover ring-2 ring-[#7865F5]/25" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1LJY_yHHHcAjuehUQO44jDQnNRdwcpx7sFtOWTkoHuTPXrqkzD4x3h0CTIOQvhZZNOPRaEHyfv37BnDhCIK2A2V4tb3KPW9ZZkjkiaz8ah8Mv8LL7PAwivhUp0P-_jm-fNRioYex3OAEGrdqutrYS8ZpqhmYJ2mGOZV5O4vkFBgzUjPUj_iwYOI6gIP2OGp_SfevpN4eaBsGFw-6zYuahnz_W4qzXvMO75GTEOj4NHyAVPMvcjC4X"><div><h4 class="text-sm text-midnight font-bold leading-tight">Aarav Sharma</h4><p class="text-[11px] text-text-subtle leading-tight mt-0.5">B.Tech Computer Science &amp; Eng.</p><span class="inline-block px-1.5 py-0.5 rounded bg-[#F7F5EE] text-text-subtle font-mono text-[10px] mt-1">Class of 2026</span></div></div><div class="flex items-center justify-between text-xs text-text-subtle"><span class="flex items-center gap-1 text-[#2E7D32] font-semibold"><span class="material-symbols-outlined text-sm">verified</span> Apex Institute of Technology</span><span class="font-mono text-[#7865F5] font-semibold">Active</span></div></div></div></div></div></header>
+<!-- Main Content Area -->
+<main class="w-full pt-28 pb-12 flex-grow">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-10 flex flex-col gap-8">
+<!-- Expressive Greeting Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-lavender-subtle text-electric text-[11px] font-bold tracking-wide uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-electric animate-pulse"></span>
+              Portfolio Synchronized
+            </span>
+<span class="text-xs text-text-subtle font-medium">• Fall Placement Sprint Active</span>
+</div>
+<h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-midnight">
+            Hey, Aarav! <span class="inline-block animate-bounce hover:rotate-12 transition-transform cursor-default">👋</span>
+</h1>
+<p class="mt-2 text-base md:text-lg text-text-subtle font-medium">
+            Your future looks good on you. <span class="text-midnight font-semibold">Let's build your next milestone.</span>
+</p>
+</div>
+<!-- Quick Cycle Badge & Skill Audit CTA -->
+
+</div>
+<!-- MAIN HERO READINESS CARD (Curriculum & Skill Match Index with Bridge Motif) -->
+<section class="relative overflow-hidden rounded-3xl bg-white border border-[#EBE7DF] p-6 lg:p-9 shadow-[0_4px_24px_-4px_rgba(23,21,46,0.05)] card-hover-lift">
+<!-- Ambient decorative background glow -->
+<div class="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-lavender-subtle/80 blur-3xl pointer-events-none"></div>
+<div class="absolute left-1/3 -bottom-24 w-80 h-80 rounded-full bg-lime-accent/15 blur-3xl pointer-events-none"></div>
+<div class="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Circular Animated Progress Ring (68/100) -->
+<div class="lg:col-span-4 flex flex-col sm:flex-row items-center gap-6">
+<div class="relative w-44 h-44 flex-shrink-0 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 160 160">
+<!-- Track -->
+<circle class="text-lavender-subtle stroke-current" cx="80" cy="80" fill="transparent" r="68" stroke-width="12"></circle>
+<!-- Animated Progress Ring -->
+<circle class="animate-ring-progress" cx="80" cy="80" fill="transparent" r="68" stroke="url(#heroGradient)" stroke-dasharray="427.25" stroke-dashoffset="136.72" stroke-linecap="round" stroke-width="12"></circle>
+<defs>
+<linearGradient id="heroGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#7865F5"></stop>
+<stop offset="70%" stop-color="#9A8BF9"></stop>
+<stop offset="100%" stop-color="#D7F36A"></stop>
+</linearGradient>
+</defs>
+</svg>
+<!-- Center Ring Value -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="text-[10px] font-extrabold uppercase tracking-widest text-text-subtle font-mono">CAREER READINESS</span>
+<div class="flex items-baseline">
+<span class="text-4xl font-black text-midnight tracking-tight">68</span>
+<span class="font-mono text-sm text-text-subtle font-bold">/100</span>
+</div>
+<span class="mt-1 inline-flex items-center gap-1 font-mono text-[11px] font-bold text-lime-accent-dark bg-lime-accent px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>+12 pts MoM
+                </span>
+</div>
+</div>
+<div class="flex flex-col text-center sm:text-left gap-1.5">
+<span class="text-[11px] font-extrabold uppercase tracking-wider text-electric font-mono">Curriculum Alignment</span>
+<h2 class="text-xl lg:text-2xl font-black text-midnight leading-snug">Python Backend Developer</h2>
+<div class="flex flex-wrap items-center gap-2 justify-center sm:justify-start pt-1">
+<span class="px-2.5 py-1 rounded-lg bg-lavender-subtle text-midnight font-mono text-xs font-semibold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-electric"></span>14 Verified
+                </span>
+<span class="px-2.5 py-1 rounded-lg bg-[#FFF2DE] text-[#8F4700] font-mono text-xs font-semibold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#E58000]"></span>4 In Progress
+                </span>
+<span class="px-2.5 py-1 rounded-lg bg-[#FFE6E6] text-[#A81818] font-mono text-xs font-semibold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#E02424]"></span>3 Target Gaps
+                </span>
+</div>
+</div>
+</div>
+<!-- Bridge Motif & Curriculum & Skill Match Context (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col justify-between gap-5 bg-lavender-card border border-lavender-subtle rounded-2xl p-5 md:p-6">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-electric text-xl">account_tree</span>
+<h3 class="text-base font-extrabold text-midnight">Curriculum &amp; Skill Match Index</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-lime-accent text-lime-accent-dark text-[10px] font-mono font-bold tracking-tight">
+                    Top 18% in Apex CS '26 cohort
+                  </span>
+</div>
+<p class="text-xs md:text-sm text-text-subtle font-medium leading-relaxed max-w-xl">Skill-match against target industry rubrics, not an employment probability. Evaluated across your coursework, resume transcripts, and GitHub commits.</p>
+</div>
+<!-- Methodology Tooltip Note -->
+<div class="flex items-center gap-1 self-start shrink-0 px-2.5 py-1 rounded-lg bg-white border border-[#E4DFFA] text-text-subtle text-xs font-mono">
+<span class="material-symbols-outlined text-electric text-sm">verified_user</span>
+<span class="">Tri-Source Model</span>
+</div>
+</div>
+<!-- Stylized Geometric Vector Bridge Graphic -->
+<div class="w-full bg-white/90 border border-[#E9E4F7] rounded-xl p-3.5 relative overflow-hidden">
+<div class="flex items-center justify-between text-[11px] font-mono font-bold text-text-subtle mb-1">
+<span class="flex items-center gap-1 text-midnight">
+<span class="w-2 h-2 rounded-full bg-electric"></span> Foundation: Coursework &amp; Git
+                </span>
+<span class="text-electric font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">auto_awesome</span> SkillBridge AI Synthesis
+                </span>
+<span class="flex items-center gap-1 text-midnight">
+<span class="w-2 h-2 rounded-full bg-lime-accent-dark"></span> Industry Ready: Backend Role
+                </span>
+</div>
+<div class="relative w-full h-12 flex items-center">
+<!-- SVG Vector of Stylized Geometric Bridge Motif -->
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 600 48">
+<defs>
+<linearGradient id="bridgeGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#7865F5"></stop>
+<stop offset="50%" stop-color="#9A8BF9"></stop>
+<stop offset="85%" stop-color="#A7E436"></stop>
+<stop offset="100%" stop-color="#364100"></stop>
+</linearGradient>
+<linearGradient id="bridgeGlow" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#7865F5" stop-opacity="0.1"></stop>
+<stop offset="50%" stop-color="#7865F5" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#D7F36A" stop-opacity="0.3"></stop>
+</linearGradient>
+</defs>
+<!-- Bridge Support Deck & Geometric Lattice -->
+<path d="M 20 40 L 580 40" stroke="#E3DEF5" stroke-dasharray="4 4" stroke-width="2"></path>
+<path d="M 20 40 Q 300 0 580 40 L 580 44 L 20 44 Z" fill="url(#bridgeGlow)"></path>
+<!-- Main Suspension Arc -->
+<path d="M 20 40 Q 300 2 580 40" fill="none" stroke="url(#bridgeGradient)" stroke-linecap="round" stroke-width="3.5"></path>
+<!-- Suspension Cables -->
+<line stroke="#D3CBF5" stroke-width="1.5" x1="120" x2="120" y1="40" y2="24"></line>
+<line stroke="#D3CBF5" stroke-width="1.5" x1="200" x2="200" y1="40" y2="15"></line>
+<line stroke="#A79AF3" stroke-width="2" x1="300" x2="300" y1="40" y2="11"></line>
+<line stroke="#BFD77B" stroke-width="1.5" x1="400" x2="400" y1="40" y2="15"></line>
+<line stroke="#BFD77B" stroke-width="1.5" x1="480" x2="480" y1="40" y2="24"></line>
+<!-- Node Anchors -->
+<circle cx="20" cy="40" fill="#7865F5" r="5" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="300" cy="11" fill="#9A8BF9" r="5" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="580" cy="40" fill="#D7F36A" r="5" stroke="#17152E" stroke-width="2"></circle>
+</svg>
+</div>
+<!-- Cohort bar indicator -->
+<div class="mt-1 flex items-center justify-between text-[11px] font-mono text-text-subtle pt-1 border-t border-[#F0ECFA]">
+<span class="">Apex CS '26 Median: <strong class="text-midnight">54/100</strong></span>
+<span class="font-bold text-electric">Aarav S: 68/100 (+14 pts above median)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- THREE SUPPORTING FOCUS COLUMNS -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+<!-- Column 1: Strongest Skills (What you're good at) (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col justify-between rounded-3xl bg-white border border-[#EBE7DF] p-6 shadow-sm card-hover-lift"><div class="">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-xl bg-lavender-subtle text-electric flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-lg">bolt</span>
+</div>
+<h3 class="text-lg font-black text-midnight tracking-tight">Strongest Skills</h3>
+</div>
+<span class="font-mono text-xs font-semibold px-2 py-0.5 rounded-full bg-canvas text-text-subtle border border-[#E7E3D8]">
+4 Curated Top
+</span>
+</div>
+<p class="text-xs text-text-subtle font-medium mb-3">Verified proficiencies assessed through Apex coursework &amp; GitHub analysis. <span class="text-electric font-semibold">(Click any skill to view evidence)</span></p>
+<!-- Skills List with Click-to-Inspect Detail -->
+<div class="space-y-3.5" id="skills-interactive-container">
+<!-- Skill 1: Python Core -->
+<div onclick="const d = document.getElementById('py-detail'); d.classList.toggle('hidden');" class="p-2 rounded-xl hover:bg-lavender-card border border-transparent hover:border-lavender-subtle cursor-pointer transition-all duration-200 group/skill">
+<div class="flex items-center justify-between text-xs mb-1.5">
+<div class="flex items-center gap-1.5">
+<span class="font-mono text-[10px] font-bold bg-[#EAE5FE] text-electric px-1.5 py-0.5 rounded">PY</span>
+<span class="font-bold text-midnight group-hover/skill:text-electric transition-colors">Python Core</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] text-text-subtle">Coursework</span>
+<span class="font-mono font-bold text-midnight">92%</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-lavender-subtle overflow-hidden">
+<div class="h-full rounded-full bg-electric animate-bar-py" style="width: 92%;"></div>
+</div>
+<div id="py-detail" class="hidden mt-2 p-2.5 rounded-lg bg-white border border-[#E4DFFA] text-[11px] text-text-subtle font-medium transition-all duration-200">
+<div class="font-bold text-midnight mb-1 flex items-center gap-1"><span class="material-symbols-outlined text-xs text-[#2E7D32]">check_circle</span> Verified via Apex CS301 (A grade) &amp; 18 GitHub commits</div>
+<span class="">Algorithms, OOP, Generator patterns, and AsyncIO tasks verified by automated unit tests.</span>
+</div>
+</div>
+<!-- Skill 2: SQL & PostgreSQL -->
+<div onclick="const d = document.getElementById('sql-detail'); d.classList.toggle('hidden');" class="p-2 rounded-xl hover:bg-lavender-card border border-transparent hover:border-lavender-subtle cursor-pointer transition-all duration-200 group/skill">
+<div class="flex items-center justify-between text-xs mb-1.5">
+<div class="flex items-center gap-1.5">
+<span class="font-mono text-[10px] font-bold bg-[#EAE5FE] text-electric px-1.5 py-0.5 rounded">SQL</span>
+<span class="font-bold text-midnight group-hover/skill:text-electric transition-colors">SQL &amp; PostgreSQL</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] text-text-subtle">Solid Verification</span>
+<span class="font-mono font-bold text-midnight">85%</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-lavender-subtle overflow-hidden">
+<div class="h-full rounded-full bg-electric animate-bar-sql" style="width: 85%;"></div>
+</div>
+<div id="sql-detail" class="hidden mt-2 p-2.5 rounded-lg bg-white border border-[#E4DFFA] text-[11px] text-text-subtle font-medium transition-all duration-200">
+<div class="font-bold text-midnight mb-1 flex items-center gap-1"><span class="material-symbols-outlined text-xs text-[#2E7D32]">check_circle</span> Verified in Database Systems Lab</div>
+<span class="">Complex indexing, CTE query optimization, and ACID compliance transactions.</span>
+</div>
+</div>
+<!-- Skill 3: Git & CI/CD Pipelines -->
+<div onclick="const d = document.getElementById('git-detail'); d.classList.toggle('hidden');" class="p-2 rounded-xl hover:bg-lavender-card border border-transparent hover:border-lavender-subtle cursor-pointer transition-all duration-200 group/skill">
+<div class="flex items-center justify-between text-xs mb-1.5">
+<div class="flex items-center gap-1.5">
+<span class="font-mono text-[10px] font-bold bg-[#EAE5FE] text-electric px-1.5 py-0.5 rounded">GIT</span>
+<span class="font-bold text-midnight group-hover/skill:text-electric transition-colors">Git &amp; CI/CD Pipelines</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] text-text-subtle">14 Repos</span>
+<span class="font-mono font-bold text-midnight">80%</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-lavender-subtle overflow-hidden">
+<div class="h-full rounded-full bg-electric animate-bar-git" style="width: 80%;"></div>
+</div>
+<div id="git-detail" class="hidden mt-2 p-2.5 rounded-lg bg-white border border-[#E4DFFA] text-[11px] text-text-subtle font-medium transition-all duration-200">
+<div class="font-bold text-midnight mb-1 flex items-center gap-1"><span class="material-symbols-outlined text-xs text-[#2E7D32]">check_circle</span> Verified via GitHub Actions workflows</div>
+<span class="">Multi-branch merging, lint automation, Docker build runners, and release tagging.</span>
+</div>
+</div>
+<!-- Skill 4: RESTful Architecture -->
+<div class="p-2 rounded-xl hover:bg-lavender-card border border-transparent transition-all duration-200">
+<div class="flex items-center justify-between text-xs mb-1.5">
+<div class="flex items-center gap-1.5">
+<span class="font-mono text-[10px] font-bold bg-[#EAE5FE] text-electric px-1.5 py-0.5 rounded">API</span>
+<span class="font-bold text-midnight">RESTful Architecture</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] text-text-subtle">Coursework</span>
+<span class="font-mono font-bold text-midnight">78%</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-lavender-subtle overflow-hidden">
+<div class="h-full rounded-full bg-electric animate-bar-api" style="width: 78%;"></div>
+</div>
+</div>
+</div>
+</div>
+<a class="mt-6 pt-4 border-t border-[#F0ECE1] inline-flex items-center justify-between text-xs font-bold text-electric hover:text-electric-hover group transition-colors duration-200" href="#my-skills" onclick="window.location.hash='my-skills';">
+<span class="">View all 21 verified skills</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform duration-200">arrow_forward</span>
+</a></div>
+<!-- Column 2: Your Next Move (High Energy Hero Card) (4 Cols) -->
+<div class="lg:col-span-4 relative flex flex-col justify-between rounded-3xl bg-midnight text-white p-6 shadow-xl overflow-hidden card-hover-lift"><!-- Glass and Neon accent textures in the background -->
+<div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-electric/30 blur-2xl pointer-events-none"></div>
+<div class="absolute -left-10 -top-10 w-44 h-44 rounded-full bg-lime-accent/15 blur-2xl pointer-events-none"></div>
+<div class="relative z-10">
+<!-- Badge -->
+<div class="flex items-center justify-between mb-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md text-lime-accent font-mono text-[10px] font-extrabold tracking-wider uppercase border border-lime-accent/30">
+⚡ HIGH IMPACT MILESTONE
+</span>
+<span class="material-symbols-outlined text-electric text-xl">rocket_launch</span>
+</div>
+<!-- Title & Copy -->
+<h3 class="text-xl lg:text-2xl font-black text-white leading-snug tracking-tight mb-2">
+Level up API Testing &amp; FastAPI
+</h3>
+<p class="text-xs lg:text-sm text-[#D3CFE6] font-medium leading-relaxed mb-5">
+Your Python foundation is solid. Adding <span class="text-lime-accent font-semibold">FastAPI</span> and <span class="text-lime-accent font-semibold">Pytest</span> will boost your backend match score from <span class="underline decoration-lime-accent decoration-2 font-bold text-white">68% to 84%</span>.
+</p>
+<!-- Stats Pill -->
+<div class="grid grid-cols-2 gap-3 mb-4">
+<div class="p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex flex-col">
+<span class="text-[10px] font-mono uppercase text-[#B7B3CF]">EFFORT ESTIMATE</span>
+<span class="text-sm font-bold text-white flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm text-lime-accent">schedule</span> ~6 hrs effort
+</span>
+</div>
+<div class="p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex flex-col">
+<span class="text-[10px] font-mono uppercase text-[#B7B3CF]">MATCH SURGE</span>
+<span class="text-sm font-bold text-lime-accent flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-sm">trending_up</span> +16 pts leap
+</span>
+</div>
+</div>
+<!-- Interactive Feedback Notification Toast (Toggled by CTA) -->
+<div id="milestone-toast" class="hidden mb-4 p-3 rounded-xl bg-lime-accent/20 border border-lime-accent/40 text-xs text-lime-accent font-semibold flex items-center gap-2 transition-all duration-300">
+<span class="material-symbols-outlined text-sm text-lime-accent">task_alt</span>
+<span class="">Milestone Queued: Added to My Roadmap!</span>
+</div>
+</div>
+<!-- Bold Lime CTA Button & Sub-Action -->
+<div class="relative z-10 space-y-2 pt-2">
+<button id="lets-do-it-btn" onclick="const t = document.getElementById('milestone-toast'); const b = document.getElementById('lets-do-it-btn'); t.classList.remove('hidden'); b.innerHTML='&lt;span&gt;In Progress in Roadmap&lt;/span&gt;&lt;span class=\'material-symbols-outlined text-base\'&gt;done_all&lt;/span&gt;'; b.classList.add('bg-white', 'text-midnight'); b.classList.remove('bg-lime-accent'); setTimeout(() =&gt; { window.location.hash = 'my-roadmap'; }, 1000);" class="w-full py-3.5 px-4 rounded-2xl bg-lime-accent text-midnight font-black text-sm tracking-wide flex items-center justify-center gap-2 glow-lime hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 cursor-pointer" type="button">
+<span class="">Let's Do It</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+<a href="#my-roadmap" onclick="window.location.hash='my-roadmap';" class="w-full py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-[#D3CFE6] transition-colors duration-200 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">segment</span>
+<span class="">View Step-by-Step Breakdown</span>
+</a>
+</div></div>
+<!-- Column 3: Recommended Career (Where you stand) (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col justify-between rounded-3xl bg-white border border-[#EBE7DF] p-6 shadow-sm card-hover-lift">
+<div>
+<div class="flex items-start justify-between mb-2">
+<div>
+<span class="font-mono text-[10px] uppercase font-bold text-text-subtle tracking-wider">CAREER MATCH TARGET</span>
+<h3 class="text-lg font-black text-midnight tracking-tight mt-0.5">Python Backend Developer</h3>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-lime-accent/80 text-lime-accent-dark font-mono text-xs font-black shadow-xs">
+<span class="material-symbols-outlined text-xs">local_fire_department</span>
+                82% Fit Match
+              </span>
+</div>
+<p class="text-xs text-text-subtle font-medium mb-4">
+              Synthesized benchmark matching current software engineering campus recruitment specs.
+            </p>
+<!-- Strengths and Priority Gaps -->
+<div class="space-y-4">
+<!-- Overlapping Strengths -->
+<div>
+<span class="text-[11px] font-mono font-bold uppercase tracking-wider text-text-subtle block mb-1.5">
+                  Overlapping Strengths:
+                </span>
+<div class="flex flex-wrap gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-lavender-subtle text-midnight text-xs font-semibold">
+<span class="material-symbols-outlined text-xs text-[#2E7D32]">check_circle</span> Python
+                  </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-lavender-subtle text-midnight text-xs font-semibold">
+<span class="material-symbols-outlined text-xs text-[#2E7D32]">check_circle</span> PostgreSQL
+                  </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-lavender-subtle text-midnight text-xs font-semibold">
+<span class="material-symbols-outlined text-xs text-[#2E7D32]">check_circle</span> Git
+                  </span>
+</div>
+</div>
+<!-- 2 Priority Gaps -->
+<div>
+<span class="text-[11px] font-mono font-bold uppercase tracking-wider text-[#A81818] block mb-1.5">
+                  2 Priority Gaps to Close:
+                </span>
+<div class="flex flex-wrap gap-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#FFEFEF] border border-[#FFD5D5] text-[#A81818] text-xs font-semibold">
+<span class="material-symbols-outlined text-xs">add</span> FastAPI
+                  </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#FFEFEF] border border-[#FFD5D5] text-[#A81818] text-xs font-semibold">
+<span class="material-symbols-outlined text-xs">add</span> Docker Containers
+                  </span>
+</div>
+</div>
+<!-- AI Role Insight Note -->
+<div class="p-3 rounded-2xl bg-[#F7F5EE] border border-[#EBE6DA] text-xs text-midnight/80 flex items-start gap-2">
+<span class="material-symbols-outlined text-electric text-base shrink-0 mt-0.5">psychology</span>
+<span class="leading-relaxed"><strong class="text-midnight font-bold">Why this role?</strong> Strong synergy with your Apex systems coursework &amp; high query design marks.</span>
+</div>
+</div>
+</div>
+<a class="mt-6 pt-4 border-t border-[#F0ECE1] inline-flex items-center justify-between text-xs font-bold text-electric hover:text-electric-hover group transition-colors duration-200" href="#explore-careers" onclick="window.location.hash='explore-careers';">
+<span class="">Explore Full Role Breakdown</span>
+<span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform duration-200">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- Polished Minimal Footing: Resume Status & Campus Alert -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Resume Live Status Indicator -->
+<div class="flex items-center justify-between p-4 rounded-2xl bg-white border border-[#EAE6DE] shadow-xs hover:border-[#DED8CB] transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-lavender-subtle text-electric flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-lg">description</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-xs md:text-sm font-bold text-midnight truncate flex items-center gap-1.5">
+                📄 resume_aarav_v2.pdf <span class="w-1.5 h-1.5 rounded-full bg-[#2E7D32]"></span>
+</span>
+<span class="text-[11px] font-mono text-text-subtle truncate">Synced 2 days ago · Tri-source parity validated</span>
+</div>
+</div>
+<button class="p-2 rounded-xl text-text-subtle hover:text-electric hover:bg-canvas transition-colors shrink-0" title="Re-sync Resume" type="button">
+<span class="material-symbols-outlined text-lg">sync</span>
+</button>
+</div>
+<!-- Campus Placement Partner Alert -->
+<div class="flex items-center justify-between p-4 rounded-2xl bg-white border border-[#EAE6DE] shadow-xs hover:border-[#DED8CB] transition-colors">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-9 h-9 rounded-xl bg-lime-accent/80 text-lime-accent-dark flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-lg">business_center</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="text-xs md:text-sm font-bold text-midnight truncate">Campus Placement Sprint</span>
+<span class="px-1.5 py-0.2 rounded bg-lime-accent text-lime-accent-dark font-mono text-[9px] font-extrabold uppercase">Open</span>
+</div>
+<span class="text-[11px] font-mono text-text-subtle truncate">4 hiring partners interviewing Python profiles</span>
+</div>
+</div>
+<button class="p-2 rounded-xl text-electric hover:bg-canvas transition-colors shrink-0" title="View Partner Openings" type="button">
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Clean Footer with Academic Partnership Credit -->
+<footer class="w-full bg-white border-t border-[#EAE7DF] py-6">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-text-subtle">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-electric"></span>
+<span class="font-medium">© 2025 SkillBridge AI · Apex Institute of Technology Partnership</span>
+</div>
+<div class="flex items-center gap-6 font-medium">
+<a class="hover:text-midnight transition-colors" href="#">Academic Integrity Policy</a>
+<a class="hover:text-midnight transition-colors" href="#">Campus Placement Office</a>
+<a class="hover:text-midnight transition-colors" href="#">Privacy &amp; Data Ethics</a>
+</div>
+</div>
+</footer>
+
+
+
+
+</body></html>
